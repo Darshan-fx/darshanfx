@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Public Campaign Poster</title>
+  <desc id="desc">A public campaign poster layout with a clear focal point and message bars.</desc>
+  <rect width="900" height="650" fill="#f8fbff"/>
+  <rect x="82" y="98" width="736" height="454" rx="38" fill="#141418"/>
+  <circle cx="258" cy="300" r="132" fill="#ffd166"/>
+  <rect x="438" y="178" width="238" height="44" rx="14" fill="#fff7eb"/>
+  <rect x="438" y="266" width="318" height="36" rx="12" fill="#00a896"/>
+  <rect x="438" y="340" width="224" height="26" rx="10" fill="#5a4fcf"/>
+  <rect x="438" y="414" width="178" height="58" rx="16" fill="#e43d30"/>
+</svg>

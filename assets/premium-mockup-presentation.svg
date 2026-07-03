@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Premium Mockup Presentation</title>
+  <desc id="desc">A pair of tilted presentation cards with colorful details.</desc>
+  <rect width="900" height="650" fill="#141418"/>
+  <rect x="164" y="132" width="250" height="340" rx="28" fill="#fff7eb" transform="rotate(-8 289 302)"/>
+  <rect x="452" y="118" width="260" height="360" rx="30" fill="#5a4fcf" transform="rotate(7 582 298)"/>
+  <rect x="214" y="218" width="126" height="24" rx="10" fill="#e43d30"/>
+  <rect x="504" y="220" width="142" height="28" rx="10" fill="#ffd166"/>
+  <rect x="242" y="300" width="96" height="92" rx="18" fill="#00a896"/>
+</svg>

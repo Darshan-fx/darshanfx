@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Event Launch Poster</title>
+  <desc id="desc">A bold campaign poster composition with clean colored blocks.</desc>
+  <rect width="900" height="650" fill="#141418"/>
+  <rect x="70" y="70" width="760" height="510" rx="36" fill="#fff7eb"/>
+  <rect x="115" y="120" width="282" height="360" rx="26" fill="#e43d30"/>
+  <circle cx="256" cy="245" r="84" fill="#ffd166"/>
+  <rect x="445" y="142" width="250" height="46" rx="12" fill="#141418"/>
+  <rect x="445" y="230" width="310" height="30" rx="10" fill="#00a896"/>
+  <rect x="445" y="296" width="230" height="30" rx="10" fill="#5a4fcf"/>
+  <rect x="445" y="390" width="170" height="58" rx="16" fill="#141418"/>
+</svg>

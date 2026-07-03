@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Promotion Creative Set</title>
+  <desc id="desc">A social media creative set with phone and banner layouts.</desc>
+  <rect width="900" height="650" fill="#fff7eb"/>
+  <rect x="108" y="74" width="248" height="500" rx="32" fill="#141418"/>
+  <rect x="386" y="112" width="406" height="148" rx="28" fill="#e43d30"/>
+  <rect x="386" y="300" width="406" height="212" rx="28" fill="#00a896"/>
+  <circle cx="232" cy="206" r="74" fill="#ffd166"/>
+  <rect x="154" y="348" width="156" height="22" rx="9" fill="#fff7eb"/>
+  <rect x="154" y="396" width="118" height="18" rx="9" fill="#00a896"/>
+  <rect x="438" y="162" width="226" height="26" rx="10" fill="#141418"/>
+</svg>
