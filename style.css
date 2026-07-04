@@ -1183,3 +1183,592 @@ body {
     max-width: 700px;
   }
 }
+/* =========================
+   DARK / LIGHT THEME TOGGLE
+   ========================= */
+
+.theme-toggle {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* Dark mode colors */
+body.dark-theme {
+  --ink: #f7f7fb;
+  --muted: #b7bdca;
+  --paper: #080a12;
+  --surface: #111522;
+  --line: rgba(255, 255, 255, 0.12);
+  --teal: #38bdf8;
+  --red: #60a5fa;
+  --sun: #facc15;
+  --violet: #8b5cf6;
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+}
+
+body.dark-theme .site-header {
+  background: rgba(8, 10, 18, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-theme .nav-menu {
+  color: #e8ecf5;
+}
+
+body.dark-theme .nav-cta {
+  background: #ffffff;
+  color: #080a12;
+}
+
+body.dark-theme .brand-mark,
+body.dark-theme .nav-toggle,
+body.dark-theme .btn-secondary,
+body.dark-theme .trust-row span,
+body.dark-theme .mockup-card,
+body.dark-theme .service-card,
+body.dark-theme .process-step,
+body.dark-theme .testimonial-card,
+body.dark-theme .contact-form,
+body.dark-theme .contact-link,
+body.dark-theme .work-card,
+body.dark-theme .filter-btn,
+body.dark-theme .theme-toggle {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+body.dark-theme .services,
+body.dark-theme .process,
+body.dark-theme .contact {
+  background: #0b0e18;
+}
+
+body.dark-theme .mockup-card,
+body.dark-theme .work-card,
+body.dark-theme .contact-form {
+  box-shadow: var(--shadow);
+}
+
+body.dark-theme .mockup-image,
+body.dark-theme .work-card img.fit-contain {
+  background: #0e1320;
+}
+
+body.dark-theme .btn-primary {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #ffffff;
+}
+
+body.dark-theme .btn-secondary:hover,
+body.dark-theme .btn-primary:hover,
+body.dark-theme .theme-toggle:hover {
+  box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.22);
+}
+
+body.dark-theme .about,
+body.dark-theme .site-footer {
+  background: #050711;
+}
+
+body.dark-theme .hero::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+}
+
+body.dark-theme .nav-menu.is-open {
+  background: rgba(8, 10, 18, 0.98);
+}
+
+@media (max-width: 960px) {
+  .theme-toggle {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+/* =========================
+   GLASSMORPHISM FULL WEBSITE
+   paste at end of style.css
+   ========================= */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-strong: rgba(255, 255, 255, 0.60);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-shadow: 0 24px 70px rgba(20, 20, 24, 0.12);
+  --glass-blur: blur(18px);
+}
+
+/* premium soft background */
+body {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0, 168, 150, 0.14), transparent 28%),
+    radial-gradient(circle at 88% 14%, rgba(228, 61, 48, 0.10), transparent 30%),
+    radial-gradient(circle at 50% 90%, rgba(255, 209, 102, 0.18), transparent 34%),
+    var(--paper);
+}
+
+/* glass header */
+.site-header {
+  background: rgba(255, 250, 242, 0.62) !important;
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.48);
+}
+
+/* transparent sections so background feels continuous */
+.services,
+.process,
+.contact,
+.testimonials {
+  background: transparent !important;
+}
+
+/* main glass cards */
+.service-card,
+.work-card,
+.process-step,
+.testimonial-card,
+.contact-form,
+.mockup-card,
+.stats-grid article,
+.contact-link,
+.filter-btn,
+.trust-row span,
+.btn-secondary,
+.theme-toggle,
+.nav-toggle {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: var(--glass-blur) saturate(150%);
+  -webkit-backdrop-filter: var(--glass-blur) saturate(150%);
+  box-shadow: var(--glass-shadow);
+}
+
+/* stronger glass where readability matters */
+.mockup-card,
+.contact-form,
+.work-card {
+  background: var(--glass-bg-strong) !important;
+}
+
+/* portfolio/card images clean */
+.mockup-image,
+.work-card img.fit-contain {
+  background: rgba(255, 255, 255, 0.34) !important;
+}
+
+/* hover glow */
+.service-card:hover,
+.work-card:hover,
+.process-step:hover,
+.testimonial-card:hover,
+.contact-link:hover,
+.filter-btn:hover {
+  transform: translateY(-5px);
+  border-color: rgba(20, 20, 24, 0.32) !important;
+  box-shadow: 0 30px 80px rgba(20, 20, 24, 0.18);
+}
+
+/* input fields glass */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.58) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* footer glass-premium */
+.site-footer {
+  background:
+    linear-gradient(135deg, rgba(20, 20, 24, 0.94), rgba(20, 20, 24, 0.84)) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* about section glass dark */
+.about {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 168, 150, 0.22), transparent 28%),
+    linear-gradient(135deg, rgba(20, 20, 24, 0.96), rgba(20, 20, 24, 0.88)) !important;
+}
+
+/* dark mode glass support */
+body.dark-theme {
+  --glass-bg: rgba(17, 21, 34, 0.56);
+  --glass-bg-strong: rgba(17, 21, 34, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.14), transparent 28%),
+    radial-gradient(circle at 88% 14%, rgba(96, 165, 250, 0.12), transparent 30%),
+    radial-gradient(circle at 50% 90%, rgba(139, 92, 246, 0.12), transparent 34%),
+    var(--paper);
+}
+
+body.dark-theme .site-header {
+  background: rgba(8, 10, 18, 0.62) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+body.dark-theme .contact-form input,
+body.dark-theme .contact-form select,
+body.dark-theme .contact-form textarea {
+  background: rgba(17, 21, 34, 0.68) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--ink);
+}
+
+/* mobile: reduce blur for performance */
+@media (max-width: 640px) {
+  :root {
+    --glass-blur: blur(12px);
+  }
+
+  .service-card,
+  .work-card,
+  .process-step,
+  .testimonial-card,
+  .contact-form,
+  .mockup-card {
+    box-shadow: 0 18px 45px rgba(20, 20, 24, 0.10);
+  }
+}
+/* =========================
+   IMAGE PREVIEW MODAL
+   ========================= */
+
+.work-card img,
+.mockup-image img {
+  cursor: zoom-in;
+}
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 7, 17, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.image-modal.is-open {
+  display: flex;
+}
+
+.image-modal-content {
+  position: relative;
+  width: min(1000px, 96vw);
+  max-height: 92vh;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+  animation: modalZoom 0.25s ease;
+}
+
+.image-modal-content img {
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.image-modal-caption {
+  padding: 12px 6px 2px;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+}
+
+.image-modal-close {
+  position: fixed;
+  top: 20px;
+  right: 22px;
+  z-index: 10000;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.image-modal-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@keyframes modalZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .image-modal {
+    padding: 14px;
+  }
+
+  .image-modal-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .image-modal-content img {
+    max-height: 72vh;
+  }
+
+  .image-modal-close {
+    top: 14px;
+    right: 14px;
+  }
+}
+/* =========================
+   PROJECT GALLERY MODAL
+   ========================= */
+
+.project-preview-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--red);
+  font-weight: 900;
+  cursor: pointer;
+  text-align: left;
+}
+
+.project-preview-btn:hover,
+.project-preview-btn:focus-visible {
+  text-decoration: underline;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 7, 17, 0.84);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.project-modal.is-open {
+  display: flex;
+}
+
+.project-modal-box {
+  width: min(1180px, 96vw);
+  max-height: 92vh;
+  overflow: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+  padding: 18px;
+  animation: modalZoom 0.25s ease;
+}
+
+.project-modal-header {
+  color: #fff;
+  padding: 6px 4px 16px;
+}
+
+.project-modal-header span {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffd166;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-modal-header h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.project-modal-header p {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.project-modal-preview {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.project-modal-preview img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  display: block;
+  background: #fff;
+}
+
+.project-nav-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.project-prev {
+  left: 16px;
+}
+
+.project-next {
+  right: 16px;
+}
+
+.project-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.project-modal-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 100000;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.project-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+}
+
+.project-thumb {
+  flex: 0 0 92px;
+  width: 92px;
+  height: 72px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  padding: 0;
+}
+
+.project-thumb.is-active {
+  border-color: #ffd166;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.project-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .project-modal {
+    padding: 12px;
+  }
+
+  .project-modal-box {
+    padding: 12px;
+  }
+
+  .project-modal-preview {
+    min-height: 300px;
+  }
+
+  .project-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .project-prev {
+    left: 10px;
+  }
+
+  .project-next {
+    right: 10px;
+  }
+
+  .project-modal-close {
+    top: 10px;
+    right: 10px;
+  }
+}
