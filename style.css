@@ -102,15 +102,19 @@ textarea {
 }
 
 .brand-mark {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: var(--radius);
-  background: var(--ink);
-  color: var(--sun);
-  font-size: 0.9rem;
-  box-shadow: 6px 6px 0 var(--teal);
+  width: 46px;
+  height: 46px;
+  padding: 4px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 5px 5px 0 var(--teal);
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .nav-menu {
@@ -371,12 +375,23 @@ h3 {
 }
 
 .mockup-image {
-  min-height: 168px;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background: #f6efe4;
+}
+
+.mockup-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .mockup-thumb .mockup-image,
 .mockup-brand .mockup-image {
-  min-height: 98px;
+  height: 150px;
 }
 
 .poster-art,
@@ -571,7 +586,7 @@ h3 {
   color: #f8d168;
 }
 
-.about-panel p + p {
+.about-panel p+p {
   color: rgba(255, 255, 255, 0.72);
 }
 
@@ -900,10 +915,24 @@ h3 {
     width: 100%;
   }
 
-  .mockup-image,
+  .mockup-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background: #f6efe4;
+  }
+
+  .mockup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
   .mockup-thumb .mockup-image,
   .mockup-brand .mockup-image {
-    min-height: 190px;
+    height: 150px;
   }
 
   .services-grid,
@@ -925,6 +954,7 @@ h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -936,5 +966,165 @@ h3 {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* =========================
+   FINAL HERO + IMAGE SYSTEM
+   ========================= */
+
+body {
+  overflow-x: hidden;
+}
+
+.hero.section-pad {
+  padding-top: 48px;
+  padding-bottom: 70px;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr);
+  gap: 70px;
+  align-items: center;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 560px;
+  margin-left: auto;
+}
+
+.mockup-main,
+.mockup-float,
+.mockup-thumb,
+.mockup-brand {
+  position: static !important;
+  width: 100% !important;
+  max-width: 100%;
+  margin: 0 !important;
+}
+
+.mockup-main {
+  grid-column: 1 / -1;
+}
+
+.mockup-main .mockup-image {
+  height: 300px;
+}
+
+.mockup-thumb .mockup-image,
+.mockup-brand .mockup-image {
+  height: 180px;
+}
+
+.mockup-image {
+  width: 100%;
+  overflow: hidden;
+  background: #f6efe4;
+}
+
+.mockup-image img,
+.work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.mockup-card {
+  border-radius: 12px;
+}
+
+.work-card img {
+  aspect-ratio: 1.38;
+  height: auto;
+}
+
+/* Optional: use this class on poster images if you don't want cropping
+   Example: <img class="fit-contain" src="assets/images/poster-design.png" ...>
+*/
+.work-card img.fit-contain,
+.mockup-image img.fit-contain {
+  object-fit: contain;
+  background: #f6efe4;
+}
+
+/* =========================
+   SCROLL REVEAL ANIMATION
+   ========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.72s ease,
+    transform 0.72s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keep hover animations after reveal */
+.service-card.reveal,
+.work-card.reveal,
+.process-step.reveal,
+.testimonial-card.reveal {
+  transition:
+    opacity 0.72s ease,
+    transform 0.72s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.service-card.reveal.is-visible:hover,
+.work-card.reveal.is-visible:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 960px) {
+  .hero.section-pad {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .hero-visual {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-visual {
+    grid-template-columns: 1fr;
+  }
+
+  .mockup-main .mockup-image,
+  .mockup-thumb .mockup-image,
+  .mockup-brand .mockup-image {
+    height: 230px;
+  }
+
+  .work-card img {
+    aspect-ratio: 1.1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
