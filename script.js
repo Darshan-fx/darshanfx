@@ -444,3 +444,69 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") showProjectNext();
   if (event.key === "ArrowLeft") showProjectPrev();
 });
+// Count-up animation: runs every time stats section enters viewport
+const countNumbers = document.querySelectorAll(".count-number");
+const runningAnimations = new Map();
+
+function resetCounter(counter) {
+  const suffix = counter.dataset.suffix || "";
+  counter.textContent = `0${suffix}`;
+}
+
+function animateCount(counter) {
+  const target = Number(counter.dataset.count);
+  const suffix = counter.dataset.suffix || "";
+  const duration = target > 100 ? 1600 : 900;
+
+  if (runningAnimations.has(counter)) {
+    cancelAnimationFrame(runningAnimations.get(counter));
+  }
+
+  let startTime = null;
+
+  function updateCount(currentTime) {
+    if (!startTime) startTime = currentTime;
+
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.floor(easedProgress * target);
+
+    counter.textContent = `${currentValue}${suffix}`;
+
+    if (progress < 1) {
+      const frameId = requestAnimationFrame(updateCount);
+      runningAnimations.set(counter, frameId);
+    } else {
+      counter.textContent = `${target}${suffix}`;
+      runningAnimations.delete(counter);
+    }
+  }
+
+  resetCounter(counter);
+  const frameId = requestAnimationFrame(updateCount);
+  runningAnimations.set(counter, frameId);
+}
+
+if ("IntersectionObserver" in window) {
+  const countObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const counter = entry.target;
+
+        if (entry.isIntersecting) {
+          animateCount(counter);
+        } else {
+          resetCounter(counter);
+        }
+      });
+    },
+    {
+      threshold: 0.45,
+    }
+  );
+
+  countNumbers.forEach((counter) => {
+    resetCounter(counter);
+    countObserver.observe(counter);
+  });
+}
