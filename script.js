@@ -510,3 +510,49 @@ if ("IntersectionObserver" in window) {
     countObserver.observe(counter);
   });
 }
+const ring = document.createElement("div");
+ring.classList.add("cursor-ring");
+
+const dot = document.createElement("div");
+dot.classList.add("cursor-dot");
+
+document.body.appendChild(ring);
+document.body.appendChild(dot);
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let ringX = mouseX;
+let ringY = mouseY;
+
+window.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  dot.style.left = mouseX + "px";
+  dot.style.top = mouseY + "px";
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+
+  ring.style.left = ringX + "px";
+  ring.style.top = ringY + "px";
+
+  requestAnimationFrame(animateRing);
+}
+
+animateRing();
+
+document
+  .querySelectorAll("a, button, .btn, .work-card")
+  .forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      ring.classList.add("cursor-hover");
+    });
+
+    el.addEventListener("mouseleave", () => {
+      ring.classList.remove("cursor-hover");
+    });
+  });

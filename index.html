@@ -96,11 +96,15 @@
     ]
   }
   </script>
+
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="home">
     <nav class="navbar" aria-label="Primary navigation">
       <a class="brand" href="" aria-label="DarshanFx home">
@@ -151,7 +155,10 @@
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow">Freelance Graphic Designer from Rajasthan, India</p>
-          <h1 id="hero-title">I design premium visuals that help brands stand out.</h1>
+          <h1 id="hero-title">
+  <span>I design premium visuals</span>
+  <span>that help brands stand out.</span>
+</h1>
           <p class="hero-subtitle">DarshanFx creates clean, modern, attention-grabbing posters, YouTube thumbnails,
             branding graphics, social media creatives, and promotional campaign visuals built for real client impact.
           </p>
@@ -159,8 +166,7 @@
             <a class="btn btn-primary" href="#work">View My Work</a>
             <a class="btn btn-secondary"
               href="https://wa.me/918503925764?text=Hi%20DarshanFx%2C%20I%20want%20to%20start%20a%20design%20project."
-              target="_blank" rel="noopener noreferrer">Hire
-              Me on WhatsApp</a>
+              target="_blank" rel="noopener noreferrer">Hire Me on WhatsApp</a>
           </div>
           <div class="trust-row" aria-label="Trust highlights">
             <span>Freelance Designer from India</span>
@@ -271,9 +277,9 @@
           <article class="work-card reveal" data-category="posters">
             <img src="assets/images/event-campaign.png" alt="Event campaign poster design by DarshanFx" loading="lazy">
             <div class="work-content">
-              <span>Posters</span>
+              <!-- <span>Posters</span> -->
               <h3>Event Launch Poster</h3>
-              <p>A bold campaign poster concept with clean messaging and premium contrast.</p>
+              <!-- <p>A bold campaign poster concept with clean messaging and premium contrast.</p> -->
               <button class="project-preview-btn" type="button" data-project="event-launch">
                 View Project
               </button>
@@ -285,9 +291,9 @@
           <article class="work-card reveal" data-category="thumbnails">
             <img src="assets/images/youtube-thumbnail.png" alt="YouTube thumbnail design by DarshanFx" loading="lazy">
             <div class="work-content">
-              <span>Thumbnails</span>
+              <!-- <span>Thumbnails</span> -->
               <h3>Creator Video Thumbnail</h3>
-              <p>Clear focal point, strong curiosity gap, and readable text for mobile viewers.</p>
+              <!-- <p>Clear focal point, strong curiosity gap, and readable text for mobile viewers.</p> -->
               <button class="project-preview-btn" type="button" data-project="youtube-thumbnail">
                 View Project
               </button>
@@ -299,9 +305,9 @@
             <img src="assets/images/branding-mockup.png" alt="Branding graphics and mockup design by DarshanFx"
               loading="lazy">
             <div class="work-content">
-              <span>Branding</span>
+              <!-- <span>Branding</span> -->
               <h3>Business Brand Graphics</h3>
-              <p>A clean visual identity concept for a modern local business presence.</p>
+              <!-- <p>A clean visual identity concept for a modern local business presence.</p> -->
               <button class="project-preview-btn" type="button" data-project="branding">
                 View Project
               </button>
@@ -312,9 +318,9 @@
           <article class="work-card reveal" data-category="social-media">
             <img src="assets/images/poster-design.png" alt="Social media creative design by DarshanFx" loading="lazy">
             <div class="work-content">
-              <span>Social Media</span>
+              <!-- <span>Social Media</span> -->
               <h3>Promotion Creative Set</h3>
-              <p>Reusable social creatives with strong rhythm across feed and story formats.</p>
+              <!-- <p>Reusable social creatives with strong rhythm across feed and story formats.</p> -->
               <button class="project-preview-btn" type="button" data-project="social-media">
                 View Project
               </button>
@@ -325,9 +331,9 @@
           <article class="work-card reveal" data-category="mockups">
             <img src="assets/images/mockup-design.png" alt="Premium mockup presentation by DarshanFx" loading="lazy">
             <div class="work-content">
-              <span>Mockups</span>
+              <!-- <span>Mockups</span> -->
               <h3>Premium Mockup Presentation</h3>
-              <p>Polished mockup layouts that help clients visualize final design usage.</p>
+              <!-- <p>Polished mockup layouts that help clients visualize final design usage.</p> -->
               <button class="project-preview-btn" type="button" data-project="mockup">
                 View Project
               </button>
@@ -338,9 +344,9 @@
           <article class="work-card reveal" data-category="posters">
             <img src="assets/images/political-poster.png" alt="Political poster design by DarshanFx" loading="lazy">
             <div class="work-content">
-              <span>Posters</span>
+              <!-- <span>Posters</span> -->
               <h3>Public Campaign Poster</h3>
-              <p>A message-first poster system designed for clarity, reach, and trust.</p>
+              <!-- <p>A message-first poster system designed for clarity, reach, and trust.</p> -->
               <button class="project-preview-btn" type="button" data-project="political-poster">
                 View Project
               </button>
@@ -409,8 +415,8 @@ I work fast, communicate clearly, and export every file in HD so it's ready to p
           <h2 id="process-title">A clear workflow from idea to final files.</h2>
           <p>Simple communication, focused direction, and polished delivery keep every project moving smoothly.</p>
         </div>
-
-        <div class="process-grid">
+<section class="process-section glass-bg"></section>
+        <div class="process-card glass-card">
           <article class="process-step reveal">
             <span>01</span>
             <h3>Understand the client's goal</h3>
@@ -474,13 +480,31 @@ I work fast, communicate clearly, and export every file in HD so it's ready to p
             a clean, professional visual.</p>
 
           <div class="contact-actions">
-            <a class="contact-link"
-              href="https://wa.me/918503925764?text=Hi%20DarshanFx%2C%20I%20want%20to%20start%20a%20design%20project."
-              target="_blank" rel="noopener noreferrer">WhatsApp:
-              Start a project</a>
-            <a class="contact-link" href="mailto:editionlord01@gmail.com">Email: editionlord01@gmail.com</a>
-            <span class="contact-link">Location: Rajasthan, India</span>
-          </div>
+
+  <a class="flip-contact-card" href="https://wa.me/918503925764?text=Hi%20DarshanFx%2C%20I%20want%20to%20start%20a%20project" target="_blank" rel="noopener">
+    <div class="flip-inner">
+      <div class="flip-front">WhatsApp: Start a project</div>
+      <div class="flip-back">Let’s do it </div>
+    </div>
+  </a>
+
+  <a class="flip-contact-card" href="mailto:editionlord01@gmail.com">
+    <div class="flip-inner">
+      <div class="flip-front">Email: editionlord01@gmail.com</div>
+      <div class="flip-back">Let’s Do It</div>
+    </div>
+  </a>
+
+ <div class="flip-contact-card city-card">
+  <div class="flip-inner">
+    <div class="flip-front">Location: Rajasthan, India</div>
+    <div class="flip-back">
+      <span class="city-name">Parsneu</span>
+    </div>
+  </div>
+</div>
+
+</div>
         </div>
 
         <form class="contact-form reveal" novalidate aria-label="Contact form">
@@ -604,7 +628,38 @@ I work fast, communicate clearly, and export every file in HD so it's ready to p
   </footer>
 
   <button class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
+<script>
+(() => {
+  const cityCard = document.querySelector(".city-card");
+  const cityName = document.querySelector(".city-name");
 
+  if (!cityCard || !cityName) return;
+
+  const cities = ["Jaipur", "Jodhpur", "Bikaner", "Churu", "Ratangarh", "Parsneu"];
+  let timer;
+
+  cityCard.addEventListener("mouseenter", () => {
+    clearInterval(timer);
+
+    let index = 0;
+    cityName.textContent = cities[index];
+
+    timer = setInterval(() => {
+      index++;
+      cityName.textContent = cities[index];
+
+      if (index === cities.length - 1) {
+        clearInterval(timer);
+      }
+    }, 350);
+  });
+
+  cityCard.addEventListener("mouseleave", () => {
+    clearInterval(timer);
+    cityName.textContent = "Parsneu";
+  });
+})();
+</script>
   <script src="script.js" defer></script>
 </body>
 
