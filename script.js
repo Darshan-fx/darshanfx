@@ -280,13 +280,13 @@ const projectGalleries = {
     category: "Posters",
     description: "A complete poster design project with multiple campaign variations and visual directions.",
     images: [
-      "assets/images/projects/event-launch/1.png",
-      "assets/images/projects/event-launch/2.png",
-      "assets/images/projects/event-launch/3.png",
-      "assets/images/projects/event-launch/4.png",
-      "assets/images/projects/event-launch/5.png",
-      "assets/images/projects/event-launch/6.png",
-      "assets/images/projects/event-launch/7.png"
+      "assets/images/projects/event-launch/1.webp",
+      "assets/images/projects/event-launch/2.webp",
+      "assets/images/projects/event-launch/3.webp",
+      "assets/images/projects/event-launch/4.webp",
+      "assets/images/projects/event-launch/5.webp",
+      "assets/images/projects/event-launch/6.webp",
+      "assets/images/projects/event-launch/7.webp"
     ]
   },
 
@@ -295,7 +295,7 @@ const projectGalleries = {
     category: "Thumbnails",
     description: "Thumbnail design variations focused on contrast, clarity, and scroll-stopping visual impact.",
     images: [
-      "assets/images/projects/youtube-thumbnail/1.png",
+      "assets/images/projects/youtube-thumbnail/1.webp",
       "assets/images/projects/youtube-thumbnail/2.png",
       "assets/images/projects/youtube-thumbnail/3.png"
     ]
@@ -306,9 +306,9 @@ const projectGalleries = {
     category: "Branding",
     description: "Branding graphics, mockups, identity previews, and professional visual presentation.",
     images: [
-      "assets/images/projects/branding/1.png",
-      "assets/images/projects/branding/2.png",
-      "assets/images/projects/branding/3.png"
+      "assets/images/projects/branding/1.webp",
+      "assets/images/projects/branding/2.webp",
+      "assets/images/projects/branding/3.webp"
     ]
   },
 
@@ -317,31 +317,38 @@ const projectGalleries = {
     category: "Social Media",
     description: "A set of social media creatives designed for promotional campaigns and brand communication.",
     images: [
-      "assets/images/projects/social-media/1.png",
+      "assets/images/projects/social-media/1.webp",
       "assets/images/projects/social-media/2.png",
       "assets/images/projects/social-media/3.png"
     ]
   },
 
-  "mockup": {
-    title: "Premium Mockup Presentation",
-    category: "Mockups",
-    description: "Mockup presentation images showing how the final design looks in realistic placements.",
-    images: [
-      "assets/images/projects/mockup/1.png",
-      "assets/images/projects/mockup/2.png",
-      "assets/images/projects/mockup/3.png"
-    ]
-  },
+ "mockup": {
+  title: "Premium Mockup Presentation",
+  category: "Mockups",
+  description: "Mockup presentation images showing how the final design looks in realistic placements.",
+  images: [
+    "assets/images/projects/mockup/1.webp",
+    "assets/images/projects/mockup/2.webp",
+    "assets/images/projects/mockup/3.webp",
+    "assets/images/projects/mockup/4.webp",
+    "assets/images/projects/mockup/5.webp",
+    "assets/images/projects/mockup/6.webp",
+    "assets/images/projects/mockup/7.webp",
+    "assets/images/projects/mockup/8.webp",
+  ]
+},
 
   "political-poster": {
     title: "Public Campaign Poster",
     category: "Posters",
     description: "Political and public campaign poster visuals with clear message hierarchy.",
     images: [
-      "assets/images/projects/political-poster/1.png",
-      "assets/images/projects/political-poster/2.png",
-      "assets/images/projects/political-poster/3.png"
+      "assets/images/projects/political-poster/1.webp",
+      "assets/images/projects/political-poster/2.webp",
+      "assets/images/projects/political-poster/3.webp",
+      "assets/images/projects/political-poster/4.webp",
+      "assets/images/projects/political-poster/5.webp"
     ]
   }
 };
@@ -412,12 +419,24 @@ function showProjectNext() {
   renderProjectImage();
 }
 
+function showProjectNext() {
+  if (!activeProject) return;
+
+  if (activeProjectIndex < activeProject.images.length - 1) {
+    activeProjectIndex++;
+    renderProjectImage();
+  }
+}
+
 function showProjectPrev() {
   if (!activeProject) return;
-  activeProjectIndex =
-    (activeProjectIndex - 1 + activeProject.images.length) % activeProject.images.length;
-  renderProjectImage();
+
+  if (activeProjectIndex > 0) {
+    activeProjectIndex--;
+    renderProjectImage();
+  }
 }
+
 
 projectButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -555,4 +574,35 @@ document
     el.addEventListener("mouseleave", () => {
       ring.classList.remove("cursor-hover");
     });
+  });/* ==========================================
+   AUTO SET WORK CARD COVER IMAGES
+   Paste at END of script.js
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(".project-preview-btn").forEach((btn) => {
+
+    const projectId = btn.dataset.project;
+
+    if (!projectGalleries[projectId]) return;
+
+    const card = btn.closest(".work-card");
+    if (!card) return;
+
+    const img = card.querySelector("img");
+    if (!img) return;
+
+    // Use first gallery image as card cover
+    img.src = projectGalleries[projectId].images[0];
+
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    img.onerror = () => {
+      console.warn("Image not found:", img.src);
+    };
+
   });
+
+});
