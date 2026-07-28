@@ -164,7 +164,8 @@ if (backToTop) {
 //     );
 
 //     formStatus.textContent = "Opening your email app with the project details.";
-//     window.location.href = `mailto:editionlord01@gmail.com?subject=${subject}&body=${body}`;
+//     window.location.href = `mailto:
+// ubject=${subject}&body=${body}`;
 //   });
 // }
 if (form && formStatus) {
