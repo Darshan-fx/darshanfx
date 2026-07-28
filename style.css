@@ -4810,4 +4810,18 @@ a[href*="whatsapp"]:hover{
     box-shadow:
         0 22px 48px rgba(37,99,235,.45),
         inset 0 1px 0 rgba(255,255,255,.22) !important;
-} 
+} /* REMOVE LOGO BACKGROUND */
+
+.brand-mark,
+.brand-mark img,
+.footer-brand .brand-mark {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.brand-mark img {
+  border-radius: 50% !important;
+  object-fit: contain !important;
+}

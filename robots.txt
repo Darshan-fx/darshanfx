@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yourusername.github.io/darshanfx/sitemap.xml
+Sitemap: https://darshanfx.vercel.app/sitemap.xml
