@@ -283,10 +283,6 @@ const projectGalleries = {
       "assets/images/projects/event-launch/1.webp",
       "assets/images/projects/event-launch/2.webp",
       "assets/images/projects/event-launch/3.webp",
-      "assets/images/projects/event-launch/4.webp",
-      "assets/images/projects/event-launch/5.webp",
-      "assets/images/projects/event-launch/6.webp",
-      "assets/images/projects/event-launch/7.webp"
     ]
   },
 
@@ -296,8 +292,8 @@ const projectGalleries = {
     description: "Thumbnail design variations focused on contrast, clarity, and scroll-stopping visual impact.",
     images: [
       "assets/images/projects/youtube-thumbnail/1.webp",
-      "assets/images/projects/youtube-thumbnail/2.png",
-      "assets/images/projects/youtube-thumbnail/3.png"
+      "assets/images/projects/youtube-thumbnail/2.webp",
+      "assets/images/projects/youtube-thumbnail/3.webp"
     ]
   },
 
@@ -318,8 +314,11 @@ const projectGalleries = {
     description: "A set of social media creatives designed for promotional campaigns and brand communication.",
     images: [
       "assets/images/projects/social-media/1.webp",
-      "assets/images/projects/social-media/2.png",
-      "assets/images/projects/social-media/3.png"
+      "assets/images/projects/social-media/2.webp",
+      "assets/images/projects/social-media/3.webp",
+      "assets/images/projects/social-media/4.webp",
+      "assets/images/projects/social-media/5.webp",
+      "assets/images/projects/social-media/6.webp",
     ]
   },
 
@@ -605,4 +604,214 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-});
+});/* =====================================================
+   AUTO COLLAGE THUMBNAIL FOR EVERY PROJECT CARD
+   Paste at the very END of script.js
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const MAX_VISIBLE_IMAGES = 6;
+
+  document.querySelectorAll(".work-card").forEach((card) => {
+    const projectButton = card.querySelector("[data-project]");
+    const oldCoverImage = card.querySelector(":scope > img");
+
+    if (!projectButton || !oldCoverImage) return;
+
+    const projectId = projectButton.dataset.project;
+    const project = projectGalleries[projectId];
+
+    if (
+      !project ||
+      !Array.isArray(project.images) ||
+      project.images.length === 0
+    ) {
+      return;
+    }
+
+    // Duplicate collage banne se rokega
+    if (card.querySelector(".auto-project-collage")) return;
+
+    const collage = document.createElement("div");
+    collage.className = "auto-project-collage";
+
+    const visibleImages = project.images.slice(0, MAX_VISIBLE_IMAGES);
+    collage.dataset.count = String(visibleImages.length);
+
+    visibleImages.forEach((imageSrc, index) => {
+      const item = document.createElement("button");
+
+      item.type = "button";
+      item.className = "auto-collage-item";
+      item.setAttribute(
+        "aria-label",
+        `Open ${project.title} image ${index + 1}`
+      );
+
+      const image = document.createElement("img");
+      image.src = imageSrc;
+      image.alt = `${project.title} image ${index + 1}`;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      // Broken image hone par tile hide hoga
+      image.addEventListener("error", () => {
+        item.classList.add("image-error");
+      });
+
+      item.appendChild(image);
+
+      // Jis thumbnail par click karoge, modal usi image se open hoga
+      item.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        openProjectModal(projectId);
+
+        activeProjectIndex = index;
+        renderProjectImage();
+      });
+
+      collage.appendChild(item);
+    });
+
+    // 6 se zyada images hone par last tile par +count
+    if (project.images.length > MAX_VISIBLE_IMAGES) {
+      const lastItem = collage.lastElementChild;
+
+      if (lastItem) {
+        const extraCount = document.createElement("span");
+        extraCount.className = "auto-collage-more";
+        extraCount.textContent =
+          `+${project.images.length - MAX_VISIBLE_IMAGES}`;
+
+        lastItem.appendChild(extraCount);
+      }
+    }
+
+    // Purani single cover image ki jagah collage
+    oldCoverImage.replaceWith(collage);
+  });
+});/* =========================================
+   PREMIUM GLASS CURSOR
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const supportsCustomCursor = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  ).matches;
+
+  if (!supportsCustomCursor) return;
+
+  document.body.classList.add("custom-glass-cursor");
+
+  const cursor = document.createElement("div");
+  cursor.className = "glass-cursor";
+
+  const label = document.createElement("span");
+  label.className = "glass-cursor-label";
+  label.textContent = "View";
+
+  cursor.appendChild(label);
+  document.body.appendChild(cursor);
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+
+  window.addEventListener(
+    "mousemove",
+    (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      cursor.classList.add("is-visible");
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("mouseleave", () => {
+    cursor.classList.remove("is-visible");
+  });
+
+  document.addEventListener("mouseover", (event) => {
+    const target = event.target.closest(
+      "a, button, .work-card, .card-gallery-item, .auto-collage-item"
+    );
+
+    cursor.classList.toggle("is-active", Boolean(target));
+
+    if (!target) return;
+
+    if (target.closest(".project-preview-btn, .work-card")) {
+      label.textContent = "View";
+    } else if (target.closest("a")) {
+      label.textContent = "Open";
+    } else if (target.closest("button")) {
+      label.textContent = "Click";
+    }
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.18;
+    cursorY += (mouseY - cursorY) * 0.18;
+
+    cursor.style.transform =
+      `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
+});/* REMOVE CURSOR LABEL TEXT */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const label = document.querySelector(".glass-cursor-label");
+
+  if (label) {
+    label.remove();
+  }
+});/* REMOVE ALL CUSTOM CURSORS */
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove(
+    "custom-cursor",
+    "custom-glass-cursor"
+  );
+
+  document
+    .querySelectorAll(
+      ".cursor-ring, .cursor-dot, .glass-cursor, .glass-cursor-label"
+    )
+    .forEach((element) => element.remove());
+});/* =====================================
+   FINAL: REMOVE EVERY CUSTOM CURSOR
+   ===================================== */
+
+(() => {
+  const cursorSelectors =
+    ".cursor-ring, .cursor-dot, .glass-cursor, .glass-cursor-label";
+
+  function removeCustomCursor() {
+    document.body.classList.remove(
+      "custom-cursor",
+      "custom-glass-cursor"
+    );
+
+    document
+      .querySelectorAll(cursorSelectors)
+      .forEach((element) => element.remove());
+  }
+
+  removeCustomCursor();
+
+  document.addEventListener("DOMContentLoaded", removeCustomCursor);
+
+  /* Purana code cursor dobara banaye to turant remove hoga */
+  const cursorObserver = new MutationObserver(removeCustomCursor);
+
+  cursorObserver.observe(document.documentElement, {
+    childList: true,
+    subtree: true
+  });
+})();
