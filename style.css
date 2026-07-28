@@ -1069,7 +1069,7 @@ body {
 }
 
 /* Optional: use this class on poster images if you don't want cropping
-   Example: <img class="fit-contain" src="assets/images/poster-design.png" ...>
+   Example: <img class="fit-contain" src="assets/images/poster-design.webp" ...>
 */
 .work-card img.fit-contain,
 .mockup-image img.fit-contain {
