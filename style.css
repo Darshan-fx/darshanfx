@@ -4848,4 +4848,79 @@ a[href*="whatsapp"]:hover{
   .service-card, .work-card, .process-step, .testimonial-card, .contact-form {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
   }
+}/* =========================================
+   PREMIUM BACK TO TOP BUTTON
+   ========================================= */
+
+.back-to-top{
+    width:60px !important;
+    height:60px !important;
+
+    border-radius:16px !important;
+
+    border:1px solid rgba(255,255,255,.18) !important;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6) !important;
+
+    color:#fff !important;
+
+    box-shadow:
+        0 18px 40px rgba(37,99,235,.35),
+        inset 0 1px 0 rgba(255,255,255,.25) !important;
+
+    transition:all .35s cubic-bezier(.2,.8,.2,1);
+
+    overflow:hidden;
+    position:fixed;
+}
+
+/* Shine Effect */
+
+.back-to-top::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:45%;
+    height:100%;
+
+    background:linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,.55),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    transition:left .8s ease;
+
+}
+
+.back-to-top:hover::before{
+
+    left:170%;
+
+}
+
+.back-to-top:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 26px 55px rgba(37,99,235,.45),
+        inset 0 1px 0 rgba(255,255,255,.3) !important;
+
+}
+
+.back-to-top svg,
+.back-to-top i{
+
+    color:#fff !important;
+    font-size:20px !important;
+
 }
