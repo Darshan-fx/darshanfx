@@ -294,7 +294,9 @@ const projectGalleries = {
     images: [
       "assets/images/projects/youtube-thumbnail/1.webp",
       "assets/images/projects/youtube-thumbnail/2.webp",
-      "assets/images/projects/youtube-thumbnail/3.webp"
+      "assets/images/projects/youtube-thumbnail/3.webp", 
+      "assets/images/projects/youtube-thumbnail/4.webp",
+      "assets/images/projects/youtube-thumbnail/5.webp"
     ]
   },
 
