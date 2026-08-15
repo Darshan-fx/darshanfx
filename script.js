@@ -817,4 +817,1341 @@ document.addEventListener("DOMContentLoaded", () => {
     childList: true,
     subtree: true
   });
-})();
+})();/* =========================================================
+   15 AUGUST PROJECT — AUTO ADD
+   Paste this entire code at the END of script.js
+========================================================= */
+
+(function () {
+    "use strict";
+
+    // Prevent duplicate project
+    if (document.getElementById("aug15-project-card")) return;
+
+    const images = [
+        "15-August/images/1.webp",
+        "15-August/images/2.webp",
+        "15-August/images/3.webp",
+        "15-August/images/4.webp",
+        "15-August/images/5.webp",
+        "15-August/images/6.webp",
+        "15-August/images/7.webp",
+        "15-August/images/8.webp",
+        "15-August/images/9.webp",
+        "15-August/images/10.webp",
+        "15-August/images/11.webp",
+        "15-August/images/12.webp",
+        "15-August/images/13.webp"
+    ];
+
+    /* ---------------------------------------------------------
+       FIND EXISTING PROJECT GRID
+    --------------------------------------------------------- */
+
+    const projectGrid =
+        document.querySelector(".projects-grid") ||
+        document.querySelector(".portfolio-grid") ||
+        document.querySelector(".work-grid") ||
+        document.querySelector("#projects .grid") ||
+        document.querySelector("#work .grid") ||
+        document.querySelector("#projects") ||
+        document.querySelector("#work");
+
+    if (!projectGrid) {
+        console.warn("15 August: Project grid not found.");
+        return;
+    }
+
+    /* ---------------------------------------------------------
+       CREATE CARD
+    --------------------------------------------------------- */
+
+    const card = document.createElement("article");
+
+    card.id = "aug15-project-card";
+    card.className = "project-card aug15-project-card";
+
+    card.innerHTML = `
+        <div class="aug15-cover">
+            <div class="aug15-collage"></div>
+
+            <div class="aug15-overlay">
+                <span class="aug15-category">POSTERS</span>
+                <h3>15 August</h3>
+                <p>Independence Day creative collection</p>
+
+                <span class="aug15-arrow">↗</span>
+            </div>
+        </div>
+    `;
+
+    projectGrid.appendChild(card);
+
+    /* ---------------------------------------------------------
+       COLLAGE
+    --------------------------------------------------------- */
+
+    const collage = card.querySelector(".aug15-collage");
+
+    const collageImages = images.slice(0, 6);
+
+    collageImages.forEach((src, index) => {
+        const img = document.createElement("img");
+
+        img.src = src;
+        img.alt = `15 August Design ${index + 1}`;
+        img.loading = "lazy";
+
+        collage.appendChild(img);
+    });
+
+    /* ---------------------------------------------------------
+       MODAL
+    --------------------------------------------------------- */
+
+    const modal = document.createElement("div");
+
+    modal.id = "aug15-modal";
+
+    modal.innerHTML = `
+        <div class="aug15-modal-backdrop"></div>
+
+        <div class="aug15-modal-box">
+
+            <button class="aug15-close" aria-label="Close">
+                ×
+            </button>
+
+            <div class="aug15-modal-header">
+                <div>
+                    <span>POSTERS</span>
+                    <h2>15 August</h2>
+                    <p>Independence Day creative collection</p>
+                </div>
+
+                <div class="aug15-counter">
+                    <span id="aug15-current">1</span>
+                    /
+                    <span>${images.length}</span>
+                </div>
+            </div>
+
+            <div class="aug15-main-image-wrap">
+
+                <button
+                    class="aug15-nav aug15-prev"
+                    aria-label="Previous image"
+                >
+                    ‹
+                </button>
+
+                <img
+                    id="aug15-main-image"
+                    src="${images[0]}"
+                    alt="15 August Design"
+                >
+
+                <button
+                    class="aug15-nav aug15-next"
+                    aria-label="Next image"
+                >
+                    ›
+                </button>
+
+            </div>
+
+            <div class="aug15-thumbnails"></div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    /* ---------------------------------------------------------
+       MODAL ELEMENTS
+    --------------------------------------------------------- */
+
+    const mainImage = modal.querySelector("#aug15-main-image");
+    const currentCounter = modal.querySelector("#aug15-current");
+    const thumbnails = modal.querySelector(".aug15-thumbnails");
+
+    const closeBtn = modal.querySelector(".aug15-close");
+    const prevBtn = modal.querySelector(".aug15-prev");
+    const nextBtn = modal.querySelector(".aug15-next");
+    const backdrop = modal.querySelector(".aug15-modal-backdrop");
+
+    let currentIndex = 0;
+
+    /* ---------------------------------------------------------
+       THUMBNAILS
+    --------------------------------------------------------- */
+
+    images.forEach((src, index) => {
+
+        const thumb = document.createElement("button");
+
+        thumb.className = "aug15-thumb";
+
+        thumb.innerHTML = `
+            <img
+                src="${src}"
+                alt="15 August ${index + 1}"
+                loading="lazy"
+            >
+        `;
+
+        thumb.addEventListener("click", function () {
+            showImage(index);
+        });
+
+        thumbnails.appendChild(thumb);
+    });
+
+    const thumbnailButtons =
+        thumbnails.querySelectorAll(".aug15-thumb");
+
+    /* ---------------------------------------------------------
+       SHOW IMAGE
+    --------------------------------------------------------- */
+
+    function showImage(index) {
+
+        if (index < 0) index = 0;
+        if (index >= images.length) index = images.length - 1;
+
+        currentIndex = index;
+
+        mainImage.src = images[currentIndex];
+
+        currentCounter.textContent = currentIndex + 1;
+
+        thumbnailButtons.forEach((button, i) => {
+            button.classList.toggle(
+                "active",
+                i === currentIndex
+            );
+        });
+
+        // Don't wrap previous/next
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === images.length - 1;
+    }
+
+    /* ---------------------------------------------------------
+       OPEN MODAL
+    --------------------------------------------------------- */
+
+    function openModal() {
+
+        showImage(0);
+
+        modal.classList.add("active");
+
+        document.body.classList.add("aug15-modal-open");
+    }
+
+    /* ---------------------------------------------------------
+       CLOSE MODAL
+    --------------------------------------------------------- */
+
+    function closeModal() {
+
+        modal.classList.remove("active");
+
+        document.body.classList.remove("aug15-modal-open");
+    }
+
+    /* ---------------------------------------------------------
+       EVENTS
+    --------------------------------------------------------- */
+
+    card.addEventListener("click", openModal);
+
+    closeBtn.addEventListener("click", closeModal);
+
+    backdrop.addEventListener("click", closeModal);
+
+    prevBtn.addEventListener("click", function () {
+
+        if (currentIndex > 0) {
+            showImage(currentIndex - 1);
+        }
+
+    });
+
+    nextBtn.addEventListener("click", function () {
+
+        if (currentIndex < images.length - 1) {
+            showImage(currentIndex + 1);
+        }
+
+    });
+
+    /* ---------------------------------------------------------
+       KEYBOARD
+    --------------------------------------------------------- */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (!modal.classList.contains("active")) return;
+
+        if (event.key === "Escape") {
+            closeModal();
+        }
+
+        if (event.key === "ArrowLeft") {
+
+            if (currentIndex > 0) {
+                showImage(currentIndex - 1);
+            }
+
+        }
+
+        if (event.key === "ArrowRight") {
+
+            if (currentIndex < images.length - 1) {
+                showImage(currentIndex + 1);
+            }
+
+        }
+
+    });
+
+    /* ---------------------------------------------------------
+       STYLES
+    --------------------------------------------------------- */
+
+    const style = document.createElement("style");
+
+    style.textContent = `
+
+        /* ===============================
+           15 AUGUST CARD
+        =============================== */
+
+        .aug15-project-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            isolation: isolate;
+        }
+
+        .aug15-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: inherit;
+            background: #0b0d12;
+        }
+
+        .aug15-collage {
+            width: 100%;
+            height: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            grid-template-rows:
+                repeat(2, 1fr);
+
+            gap: 3px;
+
+            transform: scale(1.01);
+
+            transition:
+                transform .7s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .aug15-collage img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            min-width: 0;
+            min-height: 0;
+
+            transition:
+                transform .7s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .aug15-project-card:hover
+        .aug15-collage {
+            transform: scale(1.055);
+        }
+
+        .aug15-project-card:hover
+        .aug15-collage img {
+            transform: scale(1.025);
+        }
+
+        .aug15-overlay {
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding: 25px 22px 20px;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.92),
+                    rgba(0,0,0,.55),
+                    transparent
+                );
+
+            color: white;
+        }
+
+        .aug15-category {
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: .14em;
+
+            opacity: .75;
+        }
+
+        .aug15-overlay h3 {
+            margin: 0;
+
+            font-size: 22px;
+            line-height: 1.1;
+        }
+
+        .aug15-overlay p {
+            margin: 6px 0 0;
+
+            font-size: 13px;
+
+            opacity: .72;
+        }
+
+        .aug15-arrow {
+            position: absolute;
+
+            right: 20px;
+            bottom: 20px;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.12);
+
+            border: 1px solid
+                rgba(255,255,255,.18);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 20px;
+
+            transition:
+                transform .3s ease,
+                background .3s ease;
+        }
+
+        .aug15-project-card:hover
+        .aug15-arrow {
+            transform: translate(3px,-3px);
+
+            background:
+                rgba(60,140,255,.8);
+        }
+
+
+        /* ===============================
+           MODAL
+        =============================== */
+
+        #aug15-modal {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 999999;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            visibility: hidden;
+            opacity: 0;
+
+            transition:
+                opacity .3s ease,
+                visibility .3s ease;
+        }
+
+        #aug15-modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .aug15-modal-backdrop {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.78);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+        .aug15-modal-box {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(1100px, 96vw);
+
+            max-height: 92vh;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            background:
+                rgba(18,20,27,.96);
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.55);
+
+            transform:
+                translateY(25px)
+                scale(.97);
+
+            transition:
+                transform .35s
+                cubic-bezier(.2,.8,.2,1);
+        }
+
+        #aug15-modal.active
+        .aug15-modal-box {
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+        .aug15-close {
+            position: absolute;
+
+            top: 18px;
+            right: 18px;
+
+            z-index: 5;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid
+                rgba(255,255,255,.12);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: white;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            transition:
+                background .25s ease,
+                transform .25s ease;
+        }
+
+        .aug15-close:hover {
+            background:
+                rgba(255,255,255,.18);
+
+            transform: rotate(90deg);
+        }
+
+        .aug15-modal-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 25px 70px 20px 28px;
+
+            color: white;
+        }
+
+        .aug15-modal-header span {
+            font-size: 10px;
+
+            letter-spacing: .15em;
+
+            opacity: .55;
+        }
+
+        .aug15-modal-header h2 {
+            margin: 4px 0;
+
+            font-size: 28px;
+        }
+
+        .aug15-modal-header p {
+            margin: 0;
+
+            font-size: 13px;
+
+            opacity: .6;
+        }
+
+        .aug15-counter {
+            font-size: 14px;
+
+            white-space: nowrap;
+
+            opacity: .7;
+        }
+
+        .aug15-main-image-wrap {
+            position: relative;
+
+            height: min(58vh, 620px);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(0,0,0,.25);
+
+            overflow: hidden;
+        }
+
+        #aug15-main-image {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 10px 80px;
+
+            display: block;
+        }
+
+        .aug15-nav {
+            position: absolute;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            z-index: 4;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 50%;
+
+            border: 1px solid
+                rgba(255,255,255,.12);
+
+            background:
+                rgba(255,255,255,.09);
+
+            color: white;
+
+            font-size: 35px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(10px);
+
+            transition:
+                .25s ease;
+        }
+
+        .aug15-nav:hover:not(:disabled) {
+            background:
+                rgba(60,140,255,.85);
+
+            transform:
+                translateY(-50%)
+                scale(1.05);
+        }
+
+        .aug15-nav:disabled {
+            opacity: .2;
+
+            cursor: default;
+        }
+
+        .aug15-prev {
+            left: 18px;
+        }
+
+        .aug15-next {
+            right: 18px;
+        }
+
+        .aug15-thumbnails {
+            display: flex;
+
+            gap: 8px;
+
+            padding: 14px 18px 18px;
+
+            overflow-x: auto;
+
+            scrollbar-width: thin;
+        }
+
+        .aug15-thumb {
+            flex: 0 0 70px;
+
+            height: 55px;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            border-radius: 9px;
+
+            border:
+                2px solid transparent;
+
+            background: none;
+
+            cursor: pointer;
+
+            opacity: .55;
+
+            transition:
+                opacity .2s ease,
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .aug15-thumb img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+        .aug15-thumb:hover {
+            opacity: .85;
+
+            transform: translateY(-2px);
+        }
+
+        .aug15-thumb.active {
+            opacity: 1;
+
+            border-color:
+                #4c9cff;
+        }
+
+        body.aug15-modal-open {
+            overflow: hidden;
+        }
+
+
+        /* ===============================
+           MOBILE
+        =============================== */
+
+        @media (max-width: 700px) {
+
+            #aug15-modal {
+                padding: 10px;
+            }
+
+            .aug15-modal-box {
+                width: 100%;
+
+                border-radius: 18px;
+            }
+
+            .aug15-modal-header {
+                padding: 20px 60px 15px 18px;
+            }
+
+            .aug15-modal-header h2 {
+                font-size: 23px;
+            }
+
+            .aug15-main-image-wrap {
+                height: 55vh;
+            }
+
+            #aug15-main-image {
+                padding: 10px 48px;
+            }
+
+            .aug15-nav {
+                width: 40px;
+                height: 40px;
+
+                font-size: 28px;
+            }
+
+            .aug15-prev {
+                left: 8px;
+            }
+
+            .aug15-next {
+                right: 8px;
+            }
+
+            .aug15-thumb {
+                flex-basis: 58px;
+                height: 48px;
+            }
+
+            .aug15-overlay {
+                padding:
+                    20px 15px 15px;
+            }
+
+            .aug15-overlay h3 {
+                font-size: 18px;
+            }
+
+            .aug15-overlay p {
+                font-size: 11px;
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+    /* ---------------------------------------------------------
+       IMAGE ERROR CHECK
+    --------------------------------------------------------- */
+
+    images.forEach(function (src) {
+
+        const testImage = new Image();
+
+        testImage.onerror = function () {
+            console.warn(
+                "15 August image not found:",
+                src
+            );
+        };
+
+        testImage.src = src;
+
+    });
+
+})();/* ==========================================
+   ADD ARROW BUTTON TO ALL PROJECT CARDS
+========================================== */
+
+(function () {
+
+    const cards = document.querySelectorAll(
+        ".project-card, .portfolio-card, [data-project]"
+    );
+
+    cards.forEach((card) => {
+
+        // Agar already arrow/button hai to dobara mat lagao
+        if (
+            card.querySelector(".universal-project-arrow") ||
+            card.querySelector(".aug15-arrow")
+        ) return;
+
+        const arrow = document.createElement("span");
+
+        arrow.className = "universal-project-arrow";
+        arrow.innerHTML = "↗";
+
+        arrow.setAttribute("aria-label", "View Project");
+
+        card.style.position = "relative";
+
+        card.appendChild(arrow);
+
+    });
+
+    // Button styling
+    const style = document.createElement("style");
+
+    style.textContent = `
+
+        .universal-project-arrow {
+
+            position: absolute;
+
+            right: 20px;
+            bottom: 20px;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4d9cff,
+                    #1677ff
+                );
+
+            color: #fff;
+
+            font-size: 20px;
+            font-weight: 500;
+
+            border: 1px solid
+                rgba(255,255,255,.25);
+
+            box-shadow:
+                0 8px 25px
+                rgba(30,120,255,.35);
+
+            backdrop-filter: blur(10px);
+
+            z-index: 20;
+
+            pointer-events: none;
+
+            transition:
+                transform .35s
+                cubic-bezier(.2,.8,.2,1),
+                box-shadow .35s ease;
+
+        }
+
+
+        /* Hover animation */
+
+        .project-card:hover
+        .universal-project-arrow,
+        .portfolio-card:hover
+        .universal-project-arrow,
+        [data-project]:hover
+        .universal-project-arrow {
+
+            transform:
+                translate(3px,-3px)
+                scale(1.06);
+
+            box-shadow:
+                0 12px 32px
+                rgba(30,120,255,.55);
+
+        }
+
+
+        /* Shine effect */
+
+        .universal-project-arrow::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -70%;
+
+            width: 45%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.55),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            animation:
+                projectArrowShine 3s
+                ease-in-out infinite;
+
+        }
+
+
+        @keyframes projectArrowShine {
+
+            0% {
+                left: -70%;
+            }
+
+            45% {
+                left: 130%;
+            }
+
+            100% {
+                left: 130%;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .universal-project-arrow {
+
+                right: 14px;
+                bottom: 14px;
+
+                width: 36px;
+                height: 36px;
+
+                font-size: 18px;
+
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+})();/* =====================================================
+   15 AUGUST CARD — MATCH EXISTING PROJECT CARD STYLE
+   Paste at END of script.js
+===================================================== */
+
+(function () {
+
+    const style = document.createElement("style");
+
+    style.textContent = `
+
+        /* -----------------------------------------
+           15 AUGUST CARD
+        ----------------------------------------- */
+
+        #aug15-project-card {
+            position: relative !important;
+            overflow: hidden !important;
+            border-radius: 18px !important;
+            background: #090e1c !important;
+        }
+
+
+        /* IMAGE AREA */
+
+        #aug15-project-card .aug15-cover {
+            position: relative !important;
+
+            width: 100% !important;
+
+            height: 350px !important;
+
+            aspect-ratio: auto !important;
+
+            overflow: hidden !important;
+
+            border-radius: 0 !important;
+
+            background: #080d18 !important;
+        }
+
+
+        /* COLLAGE */
+
+        #aug15-project-card .aug15-collage {
+            width: 100% !important;
+            height: 100% !important;
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(3, 1fr) !important;
+
+            grid-template-rows:
+                repeat(2, 1fr) !important;
+
+            gap: 2px !important;
+
+            transform: none !important;
+        }
+
+
+        #aug15-project-card .aug15-collage img {
+            width: 100% !important;
+            height: 100% !important;
+
+            object-fit: cover !important;
+
+            display: block !important;
+
+            transform: none !important;
+
+            transition:
+                transform .5s ease !important;
+        }
+
+
+        /* subtle image hover */
+
+        #aug15-project-card:hover
+        .aug15-collage img {
+            transform: scale(1.025) !important;
+        }
+
+
+        /* -----------------------------------------
+           DARK FOOTER — SAME AS OTHER CARDS
+        ----------------------------------------- */
+
+        #aug15-project-card .aug15-overlay {
+
+            position: absolute !important;
+
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+
+            height: 78px !important;
+
+            padding: 0 22px !important;
+
+            display: flex !important;
+
+            flex-direction: column !important;
+
+            justify-content: center !important;
+
+            background:
+                #090e1c !important;
+
+            color: white !important;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.06) !important;
+
+            box-sizing: border-box !important;
+
+        }
+
+
+        /* hide category */
+
+        #aug15-project-card
+        .aug15-category {
+            display: none !important;
+        }
+
+
+        /* TITLE */
+
+        #aug15-project-card
+        .aug15-overlay h3 {
+
+            margin: 0 !important;
+
+            font-size: 18px !important;
+
+            line-height: 1.25 !important;
+
+            font-weight: 700 !important;
+
+            color: #f5f7fb !important;
+
+        }
+
+
+        /* DESCRIPTION */
+
+        #aug15-project-card
+        .aug15-overlay p {
+
+            display: none !important;
+
+        }
+
+
+        /* -----------------------------------------
+           ARROW — SAME GREY STYLE AS OTHER CARDS
+        ----------------------------------------- */
+
+        #aug15-project-card
+        .aug15-arrow {
+
+            position: absolute !important;
+
+            right: 20px !important;
+            bottom: 19px !important;
+
+            width: 40px !important;
+            height: 40px !important;
+
+            display: flex !important;
+
+            align-items: center !important;
+            justify-content: center !important;
+
+            border-radius: 50% !important;
+
+            background:
+                rgba(255,255,255,.12) !important;
+
+            border:
+                1px solid
+                rgba(255,255,255,.16) !important;
+
+            color: #fff !important;
+
+            font-size: 20px !important;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,.25) !important;
+
+            backdrop-filter:
+                blur(10px) !important;
+
+            transform: none !important;
+
+            transition:
+                transform .3s ease,
+                background .3s ease !important;
+
+        }
+
+
+        /* arrow hover */
+
+        #aug15-project-card:hover
+        .aug15-arrow {
+
+            transform:
+                translate(3px,-3px) !important;
+
+            background:
+                rgba(255,255,255,.20) !important;
+
+        }
+
+
+        /* remove old blue shine */
+
+        #aug15-project-card
+        .aug15-arrow::before {
+
+            display: none !important;
+
+        }
+
+
+        /* -----------------------------------------
+           CARD HOVER
+        ----------------------------------------- */
+
+        #aug15-project-card {
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease !important;
+
+        }
+
+
+        #aug15-project-card:hover {
+
+            transform:
+                translateY(-4px) !important;
+
+            box-shadow:
+                0 18px 45px
+                rgba(0,0,0,.25) !important;
+
+        }
+
+
+        /* -----------------------------------------
+           MOBILE
+        ----------------------------------------- */
+
+        @media (max-width: 700px) {
+
+            #aug15-project-card
+            .aug15-cover {
+
+                height: 260px !important;
+
+            }
+
+            #aug15-project-card
+            .aug15-overlay {
+
+                height: 70px !important;
+
+                padding:
+                    0 16px !important;
+
+            }
+
+            #aug15-project-card
+            .aug15-overlay h3 {
+
+                font-size: 16px !important;
+
+            }
+
+            #aug15-project-card
+            .aug15-arrow {
+
+                right: 14px !important;
+                bottom: 15px !important;
+
+                width: 36px !important;
+                height: 36px !important;
+
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+})()
