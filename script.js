@@ -195,8 +195,7 @@ if (form && formStatus) {
     const whatsappURL = `https://wa.me/918503925764?text=${whatsappMessage}`;
 
     formStatus.textContent = "Opening WhatsApp with your project details...";
-    window.open(whatsappURL, "_blank", "noopener,noreferrer");
-
+  window.location.href = whatsappURL;
     form.reset();
   });
 }
