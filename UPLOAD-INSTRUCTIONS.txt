@@ -1,0 +1,34 @@
+DARSHANFX PREMIUM MOTION UPDATE
+================================
+
+Updated files:
+- index.html
+- style.css
+- script.js
+
+Unchanged SEO files:
+- robots.txt
+- sitemap.xml
+
+How to update the existing Vercel website:
+1. Open the existing DarshanFx project folder/repository.
+2. Replace its index.html, style.css and script.js with the updated files.
+3. Keep the existing assets folder exactly as it is. The new hero animation uses images already present inside that folder.
+4. Deploy the project to Vercel again.
+
+Premium motion included:
+- Floating glass navigation that becomes compact on scroll
+- Top scroll progress glow
+- Cinematic hero line reveal
+- Animated 3D portfolio-card fan with real project images
+- Cursor-responsive hero parallax and ambient spotlight
+- Word-by-word section heading reveals
+- 3D tilt and pointer glow on service, project, process and testimonial cards
+- Magnetic movement on important CTA buttons
+- Gentle testimonial floating rhythm
+- Mobile-safe motion and prefers-reduced-motion accessibility support
+
+Important:
+- Do not delete the assets folder from the original website.
+- No external animation library is required.
+- Existing portfolio filters, modals, theme toggle, form and SEO content are preserved.

@@ -1,0 +1,57 @@
+DARSHANFX CINEMATIC V2 — UPLOAD STEPS
+=====================================
+
+IMPORTANT:
+Your live website was still loading the OLD index.html and OLD script.js.
+This package is a complete cinematic rebuild, not the previous light patch.
+
+WHAT TO REPLACE
+---------------
+Replace these three files in the ROOT of your existing website project:
+
+1. index.html
+2. style.css
+3. script.js
+
+Do not delete or rename your existing assets folder.
+The new website uses your existing project images from:
+assets/images/projects/
+
+GITHUB + VERCEL METHOD
+----------------------
+1. Open the same GitHub repository connected to your Vercel project.
+2. Upload index.html, style.css and script.js together.
+3. Choose "Commit changes".
+4. Open Vercel > your project > Deployments.
+5. Wait until the newest deployment says "Ready".
+6. Open the website and press Ctrl + Shift + R for a hard refresh.
+
+HOW TO CONFIRM V2 IS LIVE
+-------------------------
+The first screen must be BLACK and show the large headline:
+"DESIGNS THAT MAKE PEOPLE STOP."
+
+If the old white/blue hero still appears, the files were uploaded to the
+wrong repository, wrong branch, or Vercel has not deployed the new commit.
+
+WHAT THIS VERSION INCLUDES
+--------------------------
+- Animated opening loader
+- Floating glass navigation
+- Oversized cinematic hero typography
+- Four tilted artwork cards with mouse parallax
+- Orange moving service marquee
+- Word-by-word section title reveals
+- 3D service-card hover motion
+- Seamless auto-moving horizontal project loop matching the reference video
+- Mouse/touch drag support with a highlighted center project
+- Animated work progress indicator
+- Project filters and multi-image gallery modal
+- About counters and floating light orb
+- Sticky process section
+- Moving testimonial rail
+- Magnetic buttons, glowing custom cursor and scroll progress
+- Mobile and reduced-motion support
+- WhatsApp project form
+
+Keep robots.txt and sitemap.xml unchanged unless you specifically need them.

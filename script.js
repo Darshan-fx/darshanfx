@@ -2154,4 +2154,966 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.head.appendChild(style);
 
-})()
+})();/* =========================================
+   VIEW MY WORK — FULL BORDER LIGHT LOOP
+========================================= */
+
+(() => {
+  function createFullBorderAnimation() {
+    const button = document.querySelector(
+      ".hero .hero-actions .btn-primary"
+    );
+
+    if (!button || button.querySelector(".dfx-full-border-svg")) return;
+
+    /* Previous half-circle animation disable */
+    const style = document.createElement("style");
+
+    style.textContent = `
+      body .hero .hero-actions .btn-primary {
+        position: relative !important;
+        isolation: isolate !important;
+        overflow: visible !important;
+      }
+
+      body .hero .hero-actions .btn-primary::before,
+      body .hero .hero-actions .btn-primary::after {
+        content: none !important;
+        display: none !important;
+        animation: none !important;
+      }
+
+      .dfx-full-border-svg {
+        position: absolute !important;
+        inset: -3px !important;
+        z-index: 5 !important;
+
+        width: calc(100% + 6px) !important;
+        height: calc(100% + 6px) !important;
+
+        overflow: visible !important;
+        pointer-events: none !important;
+      }
+
+      .dfx-border-base {
+        fill: none;
+        stroke: rgba(147, 197, 253, 0.35);
+        stroke-width: 1.5;
+      }
+
+      .dfx-border-glow {
+        fill: none;
+        stroke: rgba(59, 130, 246, 0.65);
+        stroke-width: 7;
+        stroke-linecap: round;
+
+        stroke-dasharray: 20 80;
+        stroke-dashoffset: 0;
+
+        opacity: 0.55;
+        filter: blur(5px);
+
+        animation: dfxFullBorderLoop 2.6s linear infinite;
+      }
+
+      .dfx-border-beam {
+        fill: none;
+        stroke: #60a5fa;
+        stroke-width: 3;
+        stroke-linecap: round;
+
+        stroke-dasharray: 18 82;
+        stroke-dashoffset: 0;
+
+        filter:
+          drop-shadow(0 0 5px #3b82f6)
+          drop-shadow(0 0 10px rgba(59,130,246,0.8));
+
+        animation: dfxFullBorderLoop 2.6s linear infinite;
+      }
+
+      .dfx-border-head {
+        fill: none;
+        stroke: #ffffff;
+        stroke-width: 4;
+        stroke-linecap: round;
+
+        stroke-dasharray: 2 98;
+        stroke-dashoffset: 0;
+
+        filter:
+          drop-shadow(0 0 4px #ffffff)
+          drop-shadow(0 0 9px #60a5fa);
+
+        animation: dfxFullBorderLoop 2.6s linear infinite;
+      }
+
+      @keyframes dfxFullBorderLoop {
+        from {
+          stroke-dashoffset: 0;
+        }
+
+        to {
+          stroke-dashoffset: -100;
+        }
+      }
+
+      .hero .hero-actions .btn-primary:hover
+      .dfx-border-glow {
+        opacity: 0.9;
+      }
+
+      .hero .hero-actions .btn-primary:hover
+      .dfx-border-beam,
+      .hero .hero-actions .btn-primary:hover
+      .dfx-border-head {
+        animation-duration: 1.8s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dfx-border-glow,
+        .dfx-border-beam,
+        .dfx-border-head {
+          animation: none !important;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    button.insertAdjacentHTML(
+      "beforeend",
+      `
+        <svg
+          class="dfx-full-border-svg"
+          aria-hidden="true"
+          preserveAspectRatio="none"
+        >
+          <rect class="dfx-border-base" pathLength="100"></rect>
+          <rect class="dfx-border-glow" pathLength="100"></rect>
+          <rect class="dfx-border-beam" pathLength="100"></rect>
+          <rect class="dfx-border-head" pathLength="100"></rect>
+        </svg>
+      `
+    );
+
+    const svg = button.querySelector(".dfx-full-border-svg");
+    const rectangles = svg.querySelectorAll("rect");
+
+    function updateBorderSize() {
+      const width = button.offsetWidth + 6;
+      const height = button.offsetHeight + 6;
+      const borderRadius = (height - 4) / 2;
+
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+      rectangles.forEach((rectangle) => {
+        rectangle.setAttribute("x", "2");
+        rectangle.setAttribute("y", "2");
+        rectangle.setAttribute("width", width - 4);
+        rectangle.setAttribute("height", height - 4);
+        rectangle.setAttribute("rx", borderRadius);
+        rectangle.setAttribute("ry", borderRadius);
+      });
+    }
+
+    updateBorderSize();
+
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(updateBorderSize);
+      observer.observe(button);
+    } else {
+      window.addEventListener("resize", updateBorderSize);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      createFullBorderAnimation
+    );
+  } else {
+    createFullBorderAnimation();
+  }
+})();/* =========================================
+   VIEW MY WORK — PERFECT OUTER BORDER LOOP
+   Light will NEVER cross through the button
+========================================= */
+
+(() => {
+  function installPerfectButtonBorder() {
+    const button = document.querySelector(
+      ".hero .hero-actions .btn-primary"
+    );
+
+    if (!button) return;
+
+    /* Purana faulty SVG remove */
+    button
+      .querySelectorAll(
+        ".dfx-full-border-svg, .dfx-perfect-border-svg"
+      )
+      .forEach((element) => element.remove());
+
+    const style = document.createElement("style");
+    style.id = "dfx-perfect-border-style";
+
+    style.textContent = `
+      body .hero .hero-actions .btn-primary {
+        position: relative !important;
+        isolation: isolate !important;
+        overflow: visible !important;
+      }
+
+      /* Purana half-circle/shine effect completely off */
+
+      body .hero .hero-actions .btn-primary::before,
+      body .hero .hero-actions .btn-primary::after {
+        content: none !important;
+        display: none !important;
+        opacity: 0 !important;
+        animation: none !important;
+        transform: none !important;
+      }
+
+      .dfx-perfect-border-svg {
+        position: absolute !important;
+        inset: -8px !important;
+        z-index: 20 !important;
+
+        width: calc(100% + 16px) !important;
+        height: calc(100% + 16px) !important;
+
+        overflow: visible !important;
+        pointer-events: none !important;
+      }
+
+      .dfx-perfect-base {
+        fill: none;
+        stroke: rgba(147, 197, 253, 0.42);
+        stroke-width: 1.5;
+      }
+
+      .dfx-perfect-glow {
+        fill: none;
+        stroke: rgba(59, 130, 246, 0.55);
+        stroke-width: 9;
+        stroke-linecap: round;
+
+        stroke-dasharray: 15 85;
+        stroke-dashoffset: 0;
+
+        opacity: 0.5;
+        filter: blur(5px);
+
+        animation: dfxPerfectBorderMove 2.8s linear infinite;
+      }
+
+      .dfx-perfect-beam {
+        fill: none;
+        stroke: #60a5fa;
+        stroke-width: 3;
+        stroke-linecap: round;
+
+        stroke-dasharray: 13 87;
+        stroke-dashoffset: 0;
+
+        filter:
+          drop-shadow(0 0 4px #3b82f6)
+          drop-shadow(0 0 9px rgba(59,130,246,0.85));
+
+        animation: dfxPerfectBorderMove 2.8s linear infinite;
+      }
+
+      .dfx-perfect-head {
+        fill: #ffffff;
+        filter:
+          drop-shadow(0 0 4px #ffffff)
+          drop-shadow(0 0 9px #60a5fa);
+      }
+
+      .dfx-perfect-head-glow {
+        fill: rgba(96, 165, 250, 0.48);
+        filter: blur(4px);
+      }
+
+      @keyframes dfxPerfectBorderMove {
+        from {
+          stroke-dashoffset: 0;
+        }
+
+        to {
+          stroke-dashoffset: -100;
+        }
+      }
+
+      .hero .hero-actions .btn-primary:hover
+      .dfx-perfect-glow {
+        opacity: 0.85;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dfx-perfect-glow,
+        .dfx-perfect-beam {
+          animation: none !important;
+        }
+
+        .dfx-perfect-head,
+        .dfx-perfect-head-glow {
+          display: none !important;
+        }
+      }
+    `;
+
+    const oldStyle = document.getElementById(
+      "dfx-perfect-border-style"
+    );
+
+    if (oldStyle) oldStyle.remove();
+
+    document.head.appendChild(style);
+
+    const uniqueId = `dfxMotionPath-${Date.now()}`;
+
+    button.insertAdjacentHTML(
+      "beforeend",
+      `
+        <svg
+          class="dfx-perfect-border-svg"
+          aria-hidden="true"
+        >
+          <path
+            class="dfx-perfect-base"
+            pathLength="100"
+          ></path>
+
+          <path
+            class="dfx-perfect-glow"
+            pathLength="100"
+          ></path>
+
+          <path
+            class="dfx-perfect-beam"
+            pathLength="100"
+          ></path>
+
+          <path
+            id="${uniqueId}"
+            class="dfx-perfect-motion-path"
+            fill="none"
+            stroke="none"
+          ></path>
+
+          <circle
+            class="dfx-perfect-head-glow"
+            r="9"
+          >
+            <animateMotion
+              class="dfx-perfect-motion-glow"
+              dur="2.8s"
+              repeatCount="indefinite"
+            ></animateMotion>
+          </circle>
+
+          <circle
+            class="dfx-perfect-head"
+            r="3.2"
+          >
+            <animateMotion
+              class="dfx-perfect-motion-head"
+              dur="2.8s"
+              repeatCount="indefinite"
+            ></animateMotion>
+          </circle>
+        </svg>
+      `
+    );
+
+    const svg = button.querySelector(
+      ".dfx-perfect-border-svg"
+    );
+
+    const basePath = svg.querySelector(
+      ".dfx-perfect-base"
+    );
+
+    const glowPath = svg.querySelector(
+      ".dfx-perfect-glow"
+    );
+
+    const beamPath = svg.querySelector(
+      ".dfx-perfect-beam"
+    );
+
+    const motionPath = svg.querySelector(
+      ".dfx-perfect-motion-path"
+    );
+
+    const motionGlow = svg.querySelector(
+      ".dfx-perfect-motion-glow"
+    );
+
+    const motionHead = svg.querySelector(
+      ".dfx-perfect-motion-head"
+    );
+
+    function updatePerfectPath() {
+      const buttonWidth = button.offsetWidth;
+      const buttonHeight = button.offsetHeight;
+
+      const padding = 8;
+      const svgWidth = buttonWidth + padding * 2;
+      const svgHeight = buttonHeight + padding * 2;
+
+      const left = padding;
+      const top = padding;
+      const right = padding + buttonWidth;
+      const bottom = padding + buttonHeight;
+
+      const radius = buttonHeight / 2;
+      const topCenter = top + radius;
+      const bottomCenter = bottom - radius;
+
+      /* Exact outer pill-shaped path */
+
+      const pathData = `
+        M ${left + radius} ${top}
+        H ${right - radius}
+        A ${radius} ${radius} 0 0 1 ${right} ${topCenter}
+        V ${bottomCenter}
+        A ${radius} ${radius} 0 0 1 ${right - radius} ${bottom}
+        H ${left + radius}
+        A ${radius} ${radius} 0 0 1 ${left} ${bottomCenter}
+        V ${topCenter}
+        A ${radius} ${radius} 0 0 1 ${left + radius} ${top}
+        Z
+      `;
+
+      svg.setAttribute(
+        "viewBox",
+        `0 0 ${svgWidth} ${svgHeight}`
+      );
+
+      basePath.setAttribute("d", pathData);
+      glowPath.setAttribute("d", pathData);
+      beamPath.setAttribute("d", pathData);
+      motionPath.setAttribute("d", pathData);
+
+      motionGlow.setAttribute("path", pathData);
+      motionHead.setAttribute("path", pathData);
+    }
+
+    updatePerfectPath();
+
+    if ("ResizeObserver" in window) {
+      const resizeObserver = new ResizeObserver(
+        updatePerfectPath
+      );
+
+      resizeObserver.observe(button);
+    } else {
+      window.addEventListener(
+        "resize",
+        updatePerfectPath
+      );
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      installPerfectButtonBorder
+    );
+  } else {
+    installPerfectButtonBorder();
+  }
+})();/* ==========================================
+   FINAL WORKING PROJECT IMAGE ZOOM
+   Paste at END of script.js
+========================================== */
+
+(() => {
+  function installFinalZoom() {
+    if (document.getElementById("dfxFinalZoom")) return;
+
+    const preview = document.querySelector(".project-modal-preview");
+    const projectImage = document.querySelector(
+      "[data-project-main-img]"
+    );
+
+    if (!preview || !projectImage) return;
+
+    /* Zoom button automatically add hoga */
+
+    let zoomButton = preview.querySelector(
+      ".project-zoom-btn"
+    );
+
+    if (!zoomButton) {
+      zoomButton = document.createElement("button");
+      zoomButton.type = "button";
+      zoomButton.className = "project-zoom-btn";
+      zoomButton.innerHTML = "🔍 Zoom";
+      zoomButton.setAttribute(
+        "aria-label",
+        "Zoom project image"
+      );
+
+      preview.appendChild(zoomButton);
+    }
+
+    /* CSS automatically add */
+
+    const style = document.createElement("style");
+
+    style.textContent = `
+      /* Purane zoom viewers disable */
+
+      #darshanZoom,
+      #darshanZoomViewer,
+      .project-zoom-overlay {
+        display: none !important;
+      }
+
+      /* Zoom button */
+
+      .project-modal-preview .project-zoom-btn {
+        position: absolute !important;
+        top: 14px !important;
+        right: 14px !important;
+        z-index: 100 !important;
+
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 7px !important;
+
+        width: auto !important;
+        min-width: 104px !important;
+        height: 46px !important;
+        padding: 0 18px !important;
+
+        border: 1px solid rgba(255,255,255,0.22) !important;
+        border-radius: 999px !important;
+
+        background: rgba(10,20,38,0.78) !important;
+        color: #ffffff !important;
+
+        font-size: 14px !important;
+        font-weight: 800 !important;
+
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+
+        box-shadow: 0 12px 30px rgba(0,0,0,0.28) !important;
+        cursor: pointer !important;
+      }
+
+      /* Full-screen zoom */
+
+      #dfxFinalZoom {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 2147483647 !important;
+
+        display: none !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        overflow: hidden !important;
+        padding: 75px 20px 95px !important;
+
+        background: rgba(2,6,16,0.94) !important;
+
+        backdrop-filter: blur(18px) !important;
+        -webkit-backdrop-filter: blur(18px) !important;
+
+        touch-action: none !important;
+      }
+
+      #dfxFinalZoom.is-open {
+        display: flex !important;
+      }
+
+      #dfxFinalZoomImage {
+        display: block !important;
+
+        width: auto !important;
+        height: auto !important;
+
+        max-width: 92vw !important;
+        max-height: calc(100vh - 175px) !important;
+
+        object-fit: contain !important;
+        border-radius: 18px !important;
+
+        box-shadow: 0 30px 100px rgba(0,0,0,0.7) !important;
+
+        transform-origin: center !important;
+        will-change: transform !important;
+
+        cursor: grab !important;
+        user-select: none !important;
+        -webkit-user-drag: none !important;
+      }
+
+      #dfxFinalZoomImage:active {
+        cursor: grabbing !important;
+      }
+
+      .dfx-final-zoom-close {
+        position: fixed !important;
+        top: 18px !important;
+        right: 18px !important;
+        z-index: 10 !important;
+
+        width: 50px !important;
+        height: 50px !important;
+
+        border: 1px solid rgba(255,255,255,0.22) !important;
+        border-radius: 50% !important;
+
+        background: rgba(20,30,50,0.76) !important;
+        color: #ffffff !important;
+
+        font-size: 30px !important;
+        cursor: pointer !important;
+      }
+
+      .dfx-final-zoom-tools {
+        position: fixed !important;
+        left: 50% !important;
+        bottom: 20px !important;
+        z-index: 10 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.18) !important;
+        border-radius: 999px !important;
+
+        background: rgba(10,18,34,0.78) !important;
+        backdrop-filter: blur(18px) !important;
+
+        transform: translateX(-50%) !important;
+      }
+
+      .dfx-final-zoom-tools button {
+        min-width: 46px !important;
+        height: 44px !important;
+        padding: 0 14px !important;
+
+        border: 1px solid rgba(255,255,255,0.18) !important;
+        border-radius: 999px !important;
+
+        background: rgba(255,255,255,0.1) !important;
+        color: #ffffff !important;
+
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        cursor: pointer !important;
+      }
+
+      .dfx-final-zoom-level {
+        min-width: 64px !important;
+        color: #ffffff !important;
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        text-align: center !important;
+      }
+
+      @media (max-width: 600px) {
+        #dfxFinalZoom {
+          padding: 70px 10px 90px !important;
+        }
+
+        #dfxFinalZoomImage {
+          max-width: 95vw !important;
+          max-height: calc(100vh - 160px) !important;
+          border-radius: 14px !important;
+        }
+
+        .project-modal-preview .project-zoom-btn {
+          top: 10px !important;
+          right: 10px !important;
+          min-width: 92px !important;
+          height: 42px !important;
+          padding: 0 14px !important;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    /* Zoom viewer HTML automatically add */
+
+    const viewer = document.createElement("div");
+    viewer.id = "dfxFinalZoom";
+    viewer.setAttribute("aria-hidden", "true");
+
+    viewer.innerHTML = `
+      <button
+        class="dfx-final-zoom-close"
+        type="button"
+        aria-label="Close zoom"
+      >×</button>
+
+      <img
+        id="dfxFinalZoomImage"
+        alt="Zoomed project image"
+      >
+
+      <div class="dfx-final-zoom-tools">
+        <button type="button" data-dfx-zoom="out">−</button>
+
+        <span class="dfx-final-zoom-level">
+          100%
+        </span>
+
+        <button type="button" data-dfx-zoom="in">+</button>
+
+        <button type="button" data-dfx-zoom="reset">
+          Reset
+        </button>
+      </div>
+    `;
+
+    document.body.appendChild(viewer);
+
+    const zoomImage = viewer.querySelector(
+      "#dfxFinalZoomImage"
+    );
+
+    const zoomLevel = viewer.querySelector(
+      ".dfx-final-zoom-level"
+    );
+
+    const closeButton = viewer.querySelector(
+      ".dfx-final-zoom-close"
+    );
+
+    let scale = 1;
+    let moveX = 0;
+    let moveY = 0;
+
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    function updateZoom() {
+      if (scale <= 1) {
+        moveX = 0;
+        moveY = 0;
+      }
+
+      zoomImage.style.transform =
+        `translate3d(${moveX}px, ${moveY}px, 0) scale(${scale})`;
+
+      zoomLevel.textContent =
+        `${Math.round(scale * 100)}%`;
+    }
+
+    function changeZoom(amount) {
+      scale = Math.min(
+        6,
+        Math.max(1, scale + amount)
+      );
+
+      updateZoom();
+    }
+
+    function resetZoom() {
+      scale = 1;
+      moveX = 0;
+      moveY = 0;
+
+      updateZoom();
+    }
+
+    function openZoom() {
+      const sourceImage = document.querySelector(
+        ".project-modal.is-open [data-project-main-img]"
+      ) || projectImage;
+
+      const source =
+        sourceImage.currentSrc || sourceImage.src;
+
+      if (!source) return;
+
+      zoomImage.src = source;
+      zoomImage.alt =
+        sourceImage.alt || "Zoomed project image";
+
+      resetZoom();
+
+      viewer.classList.add("is-open");
+      viewer.setAttribute("aria-hidden", "false");
+
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeZoom() {
+      viewer.classList.remove("is-open");
+      viewer.setAttribute("aria-hidden", "true");
+
+      zoomImage.removeAttribute("src");
+      document.body.style.overflow = "";
+
+      dragging = false;
+      resetZoom();
+    }
+
+    /* Zoom button click */
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const clickedButton = event.target.closest(
+          ".project-zoom-btn"
+        );
+
+        if (!clickedButton) return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        openZoom();
+      },
+      true
+    );
+
+    /* Zoom controls */
+
+    viewer.addEventListener("click", (event) => {
+      const control = event.target.closest(
+        "[data-dfx-zoom]"
+      );
+
+      if (control) {
+        const action = control.dataset.dfxZoom;
+
+        if (action === "in") changeZoom(0.25);
+        if (action === "out") changeZoom(-0.25);
+        if (action === "reset") resetZoom();
+
+        return;
+      }
+
+      if (event.target === viewer) {
+        closeZoom();
+      }
+    });
+
+    closeButton.addEventListener(
+      "click",
+      closeZoom
+    );
+
+    /* Mouse-wheel zoom */
+
+    viewer.addEventListener(
+      "wheel",
+      (event) => {
+        event.preventDefault();
+
+        changeZoom(
+          event.deltaY < 0 ? 0.25 : -0.25
+        );
+      },
+      { passive: false }
+    );
+
+    /* Drag zoomed image */
+
+    zoomImage.addEventListener(
+      "pointerdown",
+      (event) => {
+        if (scale <= 1) return;
+
+        dragging = true;
+
+        startX = event.clientX - moveX;
+        startY = event.clientY - moveY;
+
+        zoomImage.setPointerCapture?.(
+          event.pointerId
+        );
+      }
+    );
+
+    zoomImage.addEventListener(
+      "pointermove",
+      (event) => {
+        if (!dragging) return;
+
+        moveX = event.clientX - startX;
+        moveY = event.clientY - startY;
+
+        updateZoom();
+      }
+    );
+
+    zoomImage.addEventListener(
+      "pointerup",
+      () => {
+        dragging = false;
+      }
+    );
+
+    zoomImage.addEventListener(
+      "pointercancel",
+      () => {
+        dragging = false;
+      }
+    );
+
+    /* Double-click zoom */
+
+    zoomImage.addEventListener(
+      "dblclick",
+      () => {
+        scale = scale > 1 ? 1 : 2.5;
+        updateZoom();
+      }
+    );
+
+    /* Keyboard */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (!viewer.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") closeZoom();
+
+        if (
+          event.key === "+" ||
+          event.key === "="
+        ) {
+          changeZoom(0.25);
+        }
+
+        if (event.key === "-") {
+          changeZoom(-0.25);
+        }
+
+        if (event.key === "0") {
+          resetZoom();
+        }
+      }
+    );
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      installFinalZoom
+    );
+  } else {
+    installFinalZoom();
+  }
+})();

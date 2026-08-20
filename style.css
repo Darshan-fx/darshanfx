@@ -4923,4 +4923,1946 @@ a[href*="whatsapp"]:hover{
     color:#fff !important;
     font-size:20px !important;
 
+}/* ==================================================
+   DARSHANFX — FLOATING BLACK GLASS NAVBAR
+   PASTE AT THE VERY END OF style.css
+================================================== */
+
+header.site-header {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    right: auto !important;
+    z-index: 9999 !important;
+
+    width: min(1240px, calc(100% - 32px)) !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    transform: translateX(-50%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* MAIN BLACK PILL */
+
+header.site-header .navbar {
+    width: 100% !important;
+    min-height: 68px !important;
+    margin: 0 !important;
+    padding: 8px 10px 8px 17px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.13) !important;
+    border-radius: 999px !important;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(20, 20, 22, 0.96),
+            rgba(4, 4, 5, 0.94)
+        ) !important;
+
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.30),
+        18px 18px 65px rgba(0, 137, 255, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+}
+
+/* LOGO */
+
+header.site-header .brand {
+    flex-shrink: 0 !important;
+    gap: 0 !important;
+    color: #ffffff !important;
+}
+
+header.site-header .brand-mark {
+    width: 45px !important;
+    height: 45px !important;
+    padding: 3px !important;
+
+    display: grid !important;
+    place-items: center !important;
+
+    border: 1px solid rgba(0, 174, 255, 0.50) !important;
+    border-radius: 50% !important;
+
+    background: rgba(255, 255, 255, 0.04) !important;
+    box-shadow:
+        0 0 25px rgba(0, 153, 255, 0.18),
+        inset 0 0 15px rgba(255, 255, 255, 0.04) !important;
+}
+
+header.site-header .brand-mark img {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    object-fit: contain !important;
+    border-radius: 50% !important;
+}
+
+/* DarshanFx text hide — reference mein only logo hai */
+
+header.site-header .brand > span:last-child {
+    display: none !important;
+}
+
+/* NAVIGATION LINKS */
+
+@media (min-width: 801px) {
+    header.site-header .nav-menu {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: clamp(13px, 1.6vw, 24px) !important;
+
+        color: #ffffff !important;
+    }
+}
+
+header.site-header .nav-menu > a:not(.nav-cta) {
+    position: relative !important;
+    min-height: auto !important;
+    padding: 8px 0 !important;
+
+    color: rgba(255, 255, 255, 0.78) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+header.site-header .nav-menu > a:not(.nav-cta)::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: 1px !important;
+
+    width: 100% !important;
+    height: 1px !important;
+
+    background: #08a9ff !important;
+
+    transform: scaleX(0) !important;
+    transform-origin: right !important;
+
+    transition: transform 0.35s ease !important;
+}
+
+header.site-header .nav-menu > a:not(.nav-cta):hover {
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
+
+header.site-header .nav-menu > a:not(.nav-cta):hover::after {
+    transform: scaleX(1) !important;
+    transform-origin: left !important;
+}
+
+/* THEME BUTTON */
+
+header.site-header .theme-toggle {
+    width: 45px !important;
+    min-width: 45px !important;
+    height: 45px !important;
+    min-height: 45px !important;
+    padding: 0 !important;
+
+    display: grid !important;
+    place-items: center !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.11) !important;
+    border-radius: 50% !important;
+
+    background: rgba(255, 255, 255, 0.045) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* HIRE ME / BUY NOW STYLE BUTTON */
+
+header.site-header .nav-cta,
+header.site-header a.nav-cta[href*="whatsapp"] {
+    min-height: 48px !important;
+    margin: 0 !important;
+    padding: 0 21px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 13px !important;
+
+    color: #00aeff !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+
+    border: 1px solid rgba(0, 174, 255, 0.38) !important;
+    border-radius: 999px !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0, 129, 214, 0.10),
+            rgba(0, 0, 0, 0.12)
+        ) !important;
+
+    box-shadow:
+        inset 0 0 25px rgba(0, 153, 255, 0.07),
+        0 0 25px rgba(0, 153, 255, 0.05) !important;
+
+    transform: none !important;
+}
+
+header.site-header .nav-cta::after {
+    content: "→" !important;
+    position: static !important;
+
+    color: #00aeff !important;
+    font-size: 18px !important;
+
+    background: none !important;
+    transform: none !important;
+}
+
+header.site-header .nav-cta:hover {
+    color: #ffffff !important;
+    border-color: rgba(0, 174, 255, 0.70) !important;
+
+    background: rgba(0, 153, 255, 0.13) !important;
+
+    box-shadow:
+        0 0 32px rgba(0, 153, 255, 0.16),
+        inset 0 0 28px rgba(0, 153, 255, 0.10) !important;
+
+    transform: translateY(-2px) !important;
+}
+
+/* Navbar fixed hone ke baad hero content hide nahi hoga */
+
+.hero {
+    padding-top: 125px !important;
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width: 800px) {
+
+    header.site-header {
+        top: 10px !important;
+        width: calc(100% - 20px) !important;
+    }
+
+    header.site-header .navbar {
+        min-height: 62px !important;
+        padding: 7px 9px 7px 13px !important;
+    }
+
+    header.site-header .brand-mark {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    header.site-header .nav-toggle {
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+
+        display: block !important;
+
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 50% !important;
+
+        background: rgba(255, 255, 255, 0.06) !important;
+        box-shadow: none !important;
+    }
+
+    header.site-header .nav-toggle span {
+        background: #ffffff !important;
+    }
+
+    header.site-header .nav-menu {
+        position: fixed !important;
+        inset: 78px 10px auto 10px !important;
+
+        display: grid !important;
+        gap: 4px !important;
+
+        padding: 18px !important;
+
+        opacity: 0 !important;
+        pointer-events: none !important;
+
+        border: 1px solid rgba(255, 255, 255, 0.13) !important;
+        border-radius: 24px !important;
+
+        background: rgba(5, 5, 7, 0.97) !important;
+
+        box-shadow:
+            0 30px 65px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+
+        transform: translateY(-25px) scale(0.97) !important;
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.35s ease !important;
+    }
+
+    header.site-header .nav-menu.is-open {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) scale(1) !important;
+    }
+
+    header.site-header .nav-menu > a:not(.nav-cta) {
+        min-height: 43px !important;
+        padding: 0 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        color: rgba(255, 255, 255, 0.84) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+    }
+
+    header.site-header .theme-toggle {
+        width: 100% !important;
+        height: 44px !important;
+        margin-top: 7px !important;
+        border-radius: 12px !important;
+    }
+
+    header.site-header .nav-cta {
+        width: 100% !important;
+        min-height: 48px !important;
+        margin-top: 8px !important;
+    }
+
+    .hero {
+        padding-top: 100px !important;
+    }
+}/* ==================================================
+   NAVBAR FINAL FIX — ROUNDED GLASSMORPHIC PILL
+   Paste after all previous CSS
+================================================== */
+
+/* Outer rectangle completely remove */
+
+html body header.site-header {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    overflow: visible !important;
+}
+
+html body header.site-header::before,
+html body header.site-header::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Main rounded glass navbar */
+
+html body header.site-header .navbar {
+    position: relative !important;
+    isolation: isolate !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.17) !important;
+    border-radius: 999px !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.105),
+            rgba(255, 255, 255, 0.035) 42%,
+            rgba(4, 10, 18, 0.48) 100%
+        ) !important;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.38),
+        0 10px 40px rgba(0, 140, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05) !important;
+
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+
+    overflow: hidden !important;
+
+    /* Left और right दोनों sides guaranteed round */
+    clip-path: inset(0 round 999px) !important;
+}
+
+/* Glass reflection */
+
+html body header.site-header .navbar::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 1px !important;
+    z-index: -1 !important;
+
+    display: block !important;
+
+    border-radius: inherit !important;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255, 255, 255, 0.12),
+            transparent 28%,
+            transparent 72%,
+            rgba(0, 174, 255, 0.07)
+        ) !important;
+
+    pointer-events: none !important;
+}
+
+/* Soft blue glow inside navbar */
+
+html body header.site-header .navbar::after {
+    content: "" !important;
+    position: absolute !important;
+    right: -80px !important;
+    bottom: -100px !important;
+    z-index: -1 !important;
+
+    display: block !important;
+
+    width: 280px !important;
+    height: 180px !important;
+
+    border-radius: 50% !important;
+    background: rgba(0, 153, 255, 0.13) !important;
+    filter: blur(55px) !important;
+
+    pointer-events: none !important;
+}
+
+/* Navbar content glass ke upar rahega */
+
+html body header.site-header .brand,
+html body header.site-header .nav-menu,
+html body header.site-header .nav-toggle {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Round logo */
+
+html body header.site-header .brand-mark,
+html body header.site-header .brand-mark img {
+    border-radius: 50% !important;
+}
+
+/* Round theme button */
+
+html body header.site-header .theme-toggle {
+    border-radius: 50% !important;
+
+    background: rgba(255, 255, 255, 0.055) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 8px 25px rgba(0, 0, 0, 0.20) !important;
+
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* Round Hire Me button */
+
+html body header.site-header .nav-cta,
+html body header.site-header a.nav-cta[href*="whatsapp"] {
+    border-radius: 999px !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0, 174, 255, 0.13),
+            rgba(0, 82, 145, 0.06)
+        ) !important;
+
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* Mobile menu ko clipping se bachana */
+
+@media (max-width: 800px) {
+    html body header.site-header .navbar {
+        overflow: visible !important;
+        clip-path: none !important;
+        border-radius: 999px !important;
+    }
+
+    html body header.site-header .nav-menu {
+        border-radius: 24px !important;
+
+        background: rgba(7, 10, 17, 0.78) !important;
+
+        backdrop-filter: blur(28px) saturate(170%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(170%) !important;
+    }
+}/* ==================================================
+   LIGHT MODE GLASS NAVBAR — FINAL FIX
+================================================== */
+
+body:not(.dark-theme) header.site-header {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Balanced transparent glass */
+
+body:not(.dark-theme) header.site-header .navbar {
+    border: 1px solid rgba(37, 99, 160, 0.20) !important;
+    border-radius: 999px !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.68),
+            rgba(225, 238, 250, 0.50) 50%,
+            rgba(204, 224, 243, 0.42)
+        ) !important;
+
+    box-shadow:
+        0 20px 55px rgba(34, 76, 120, 0.16),
+        0 5px 18px rgba(0, 132, 255, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.90),
+        inset 0 -1px 0 rgba(29, 91, 148, 0.08) !important;
+
+    backdrop-filter: blur(25px) saturate(155%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(155%) !important;
+
+    overflow: hidden !important;
+    clip-path: inset(0 round 999px) !important;
+}
+
+/* Soft glass reflection */
+
+body:not(.dark-theme) header.site-header .navbar::before {
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255, 255, 255, 0.48),
+            rgba(255, 255, 255, 0.10) 35%,
+            transparent 65%,
+            rgba(0, 140, 255, 0.06)
+        ) !important;
+}
+
+/* Blue glow */
+
+body:not(.dark-theme) header.site-header .navbar::after {
+    background: rgba(0, 132, 255, 0.10) !important;
+    filter: blur(55px) !important;
+}
+
+/* Navigation links visible dark colour */
+
+body:not(.dark-theme)
+header.site-header
+.nav-menu > a:not(.nav-cta) {
+    color: #273443 !important;
+    text-shadow: none !important;
+}
+
+body:not(.dark-theme)
+header.site-header
+.nav-menu > a:not(.nav-cta):hover {
+    color: #008fe8 !important;
+}
+
+/* Link underline */
+
+body:not(.dark-theme)
+header.site-header
+.nav-menu > a:not(.nav-cta)::after {
+    background: #009cf0 !important;
+}
+
+/* Logo glass circle */
+
+body:not(.dark-theme) header.site-header .brand-mark {
+    border: 1px solid rgba(0, 145, 230, 0.32) !important;
+
+    background: rgba(255, 255, 255, 0.48) !important;
+
+    box-shadow:
+        0 8px 25px rgba(0, 116, 210, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Theme button */
+
+body:not(.dark-theme) header.site-header .theme-toggle {
+    color: #ffffff !important;
+
+    border: 1px solid rgba(30, 91, 140, 0.16) !important;
+    border-radius: 50% !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(60, 91, 118, 0.82),
+            rgba(46, 73, 98, 0.70)
+        ) !important;
+
+    box-shadow:
+        0 9px 24px rgba(35, 73, 105, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+
+    backdrop-filter: blur(14px) !important;
+}
+
+/* Hire Me glass button */
+
+body:not(.dark-theme) header.site-header .nav-cta,
+body:not(.dark-theme)
+header.site-header
+a.nav-cta[href*="whatsapp"] {
+    color: #007fc7 !important;
+
+    border: 1px solid rgba(0, 139, 214, 0.42) !important;
+    border-radius: 999px !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0, 167, 255, 0.14),
+            rgba(0, 105, 185, 0.07)
+        ) !important;
+
+    box-shadow:
+        0 9px 26px rgba(0, 126, 205, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+}
+
+body:not(.dark-theme) header.site-header .nav-cta:hover {
+    color: #ffffff !important;
+    border-color: #008fdf !important;
+    background: #008fdf !important;
+
+    box-shadow:
+        0 12px 32px rgba(0, 143, 223, 0.28) !important;
+}
+
+/* Mobile light glass menu */
+
+@media (max-width: 800px) {
+    body:not(.dark-theme) header.site-header .navbar {
+        overflow: visible !important;
+        clip-path: none !important;
+    }
+
+    body:not(.dark-theme) header.site-header .nav-menu {
+        border: 1px solid rgba(30, 91, 140, 0.18) !important;
+
+        background: rgba(239, 247, 255, 0.88) !important;
+
+        box-shadow:
+            0 25px 60px rgba(30, 70, 110, 0.22) !important;
+
+        backdrop-filter: blur(25px) saturate(160%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(160%) !important;
+    }
+
+    body:not(.dark-theme)
+    header.site-header
+    .nav-menu > a:not(.nav-cta) {
+        color: #263747 !important;
+        border-bottom-color: rgba(30, 91, 140, 0.10) !important;
+    }
+}/* ==================================================
+   MOBILE NAVBAR GIANT OVAL FIX
+   Paste at the absolute end of style.css
+================================================== */
+
+@media screen and (max-width: 800px) {
+
+    /* Header ko fixed compact size */
+
+    html body header.site-header {
+        position: fixed !important;
+        top: 10px !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+
+        width: calc(100% - 20px) !important;
+        height: 62px !important;
+        min-height: 62px !important;
+        max-height: 62px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+
+        overflow: visible !important;
+        transform: translateX(-50%) !important;
+    }
+
+    /* Main navbar pill */
+
+    html body header.site-header .navbar {
+        position: relative !important;
+
+        width: 100% !important;
+        height: 62px !important;
+        min-height: 62px !important;
+        max-height: 62px !important;
+
+        margin: 0 !important;
+        padding: 7px 9px 7px 13px !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        align-content: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+
+        border-radius: 999px !important;
+
+        overflow: visible !important;
+        clip-path: none !important;
+    }
+
+    /* Logo compact */
+
+    html body header.site-header .brand {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+
+        width: auto !important;
+        height: 44px !important;
+        min-height: 44px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        flex-shrink: 0 !important;
+
+        transform: none !important;
+    }
+
+    html body header.site-header .brand-mark {
+        width: 43px !important;
+        height: 43px !important;
+        min-width: 43px !important;
+        min-height: 43px !important;
+
+        margin: 0 !important;
+        padding: 3px !important;
+
+        border-radius: 50% !important;
+        transform: none !important;
+    }
+
+    html body header.site-header .brand-mark img {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+    }
+
+    /* Hamburger compact right side */
+
+    html body header.site-header .nav-toggle {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        max-width: 44px !important;
+        max-height: 44px !important;
+
+        margin: 0 0 0 auto !important;
+        padding: 0 !important;
+
+        display: grid !important;
+        place-content: center !important;
+
+        border-radius: 50% !important;
+        transform: none !important;
+    }
+
+    html body header.site-header .nav-toggle span {
+        width: 19px !important;
+        height: 2px !important;
+        margin: 3px auto !important;
+
+        background: #ffffff !important;
+        border-radius: 999px !important;
+    }
+
+    /* Menu navbar ke andar size nahi badhayega */
+
+    html body header.site-header .nav-menu {
+        position: fixed !important;
+
+        top: 82px !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: auto !important;
+        inset: 82px 10px auto 10px !important;
+
+        width: calc(100% - 20px) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: calc(100svh - 100px) !important;
+
+        margin: 0 !important;
+        padding: 16px !important;
+
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        align-items: stretch !important;
+        gap: 3px !important;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+
+        border-radius: 22px !important;
+
+        transform:
+            translateY(-18px)
+            scale(0.97) !important;
+
+        transform-origin: top center !important;
+
+        transition:
+            opacity 0.28s ease,
+            visibility 0.28s ease,
+            transform 0.32s ease !important;
+    }
+
+    /* Menu open state */
+
+    html body header.site-header .nav-menu.is-open {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+
+        transform:
+            translateY(0)
+            scale(1) !important;
+    }
+
+    /* Menu links */
+
+    html body header.site-header
+    .nav-menu > a:not(.nav-cta) {
+        width: 100% !important;
+        min-height: 44px !important;
+
+        padding: 0 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        border-radius: 10px !important;
+    }
+
+    /* Theme button */
+
+    html body header.site-header .theme-toggle {
+        width: 100% !important;
+        height: 44px !important;
+        min-height: 44px !important;
+
+        margin: 6px 0 0 !important;
+        border-radius: 12px !important;
+    }
+
+    /* Hire button */
+
+    html body header.site-header .nav-cta {
+        width: 100% !important;
+        height: 48px !important;
+        min-height: 48px !important;
+
+        margin: 7px 0 0 !important;
+        border-radius: 999px !important;
+    }
+
+    /* Header pseudo elements reset */
+
+    html body header.site-header::before,
+    html body header.site-header::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    /* Hero navbar ke neeche se start hoga */
+
+    html body .hero {
+        padding-top: 95px !important;
+    }
+}
+
+/* Extra-small phones */
+
+@media screen and (max-width: 380px) {
+    html body header.site-header {
+        width: calc(100% - 14px) !important;
+    }
+
+    html body header.site-header .nav-menu {
+        left: 7px !important;
+        right: 7px !important;
+        width: calc(100% - 14px) !important;
+    }
+}/* ==========================================
+   MOBILE THEME BUTTON — PERFECT ROUND FIX
+========================================== */
+
+@media screen and (max-width: 800px) {
+
+    html body header.site-header .nav-menu .theme-toggle {
+        width: 46px !important;
+        height: 46px !important;
+
+        min-width: 46px !important;
+        min-height: 46px !important;
+        max-width: 46px !important;
+        max-height: 46px !important;
+
+        aspect-ratio: 1 / 1 !important;
+
+        margin: 10px auto 5px !important;
+        padding: 0 !important;
+
+        display: grid !important;
+        place-items: center !important;
+        justify-self: center !important;
+
+        border-radius: 50% !important;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(68, 96, 120, 0.88),
+                rgba(43, 67, 90, 0.82)
+            ) !important;
+
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
+
+        box-shadow:
+            0 10px 28px rgba(24, 55, 82, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+
+        overflow: hidden !important;
+        transform: none !important;
+    }
+
+    html body header.site-header .theme-toggle::before,
+    html body header.site-header .theme-toggle::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    html body header.site-header .theme-toggle span {
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+
+        font-size: 17px !important;
+        line-height: 1 !important;
+
+        background: transparent !important;
+        transform: none !important;
+    }
+}/* ==========================================
+   HERO BUTTONS + BADGES SOFT PILL SHAPE
+========================================== */
+
+/* View My Work + WhatsApp buttons */
+
+html body .hero-actions .btn,
+html body .hero-actions a.btn {
+    min-height: 58px !important;
+    padding: 0 30px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 999px !important;
+    clip-path: inset(0 round 999px) !important;
+
+    overflow: hidden !important;
+
+    transition:
+        transform 0.30s ease,
+        box-shadow 0.30s ease,
+        background 0.30s ease !important;
+}
+
+/* Button ke shine/pseudo elements bhi rounded */
+
+html body .hero-actions .btn::before,
+html body .hero-actions .btn::after {
+    border-radius: inherit !important;
+}
+
+/* View My Work button */
+
+html body .hero-actions .btn-primary {
+    border-radius: 999px !important;
+
+    box-shadow:
+        0 14px 35px rgba(47, 133, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.30) !important;
+}
+
+/* WhatsApp button */
+
+html body .hero-actions .btn-secondary {
+    border-radius: 999px !important;
+
+    background: rgba(12, 22, 42, 0.36) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* Hover effect */
+
+html body .hero-actions .btn:hover {
+    transform: translateY(-3px) !important;
+}
+
+/* Freelance, Fast Delivery, Premium Quality badges */
+
+html body .trust-row span {
+    min-height: 38px !important;
+    padding: 0 17px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 999px !important;
+    clip-path: inset(0 round 999px) !important;
+
+    background: rgba(255, 255, 255, 0.045) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 22px rgba(0, 0, 0, 0.09) !important;
+
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+
+    white-space: nowrap !important;
+}
+
+/* Light mode badges */
+
+body:not(.dark-theme) .trust-row span {
+    color: #34475b !important;
+
+    background: rgba(255, 255, 255, 0.48) !important;
+    border-color: rgba(47, 100, 150, 0.17) !important;
+
+    box-shadow:
+        0 8px 22px rgba(45, 90, 130, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+    html body .hero-actions .btn {
+        width: 100% !important;
+        min-height: 56px !important;
+        border-radius: 999px !important;
+    }
+
+    html body .trust-row {
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 9px !important;
+    }
+
+    html body .trust-row span {
+        min-height: 36px !important;
+        padding: 0 14px !important;
+        border-radius: 999px !important;
+    }
+}/* ==================================================
+   PROJECT IMAGE AUTO-SIZE BOX + ZOOM BUTTON
+================================================== */
+
+/* Image ka outer box image ke size ke according */
+
+html body .project-modal-preview {
+    position: relative !important;
+
+    width: fit-content !important;
+    max-width: calc(100% - 40px) !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+
+    overflow: visible !important;
+}
+
+/* Image apne original aspect ratio mein रहेगी */
+
+html body .project-modal-preview > img[data-project-main-img] {
+    display: block !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    max-width: min(78vw, 1100px) !important;
+    max-height: 72vh !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    border: 1px solid rgba(255,255,255,.16) !important;
+    border-radius: 20px !important;
+
+    background: transparent !important;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.24) !important;
+
+    cursor: zoom-in !important;
+}
+
+/* Previous/Next arrows image ke upar */
+
+html body .project-modal-preview .project-nav-btn {
+    position: absolute !important;
+    top: 50% !important;
+    z-index: 20 !important;
+
+    width: 48px !important;
+    height: 48px !important;
+
+    border-radius: 50% !important;
+
+    transform: translateY(-50%) !important;
+}
+
+html body .project-modal-preview .project-prev {
+    left: 14px !important;
+}
+
+html body .project-modal-preview .project-next {
+    right: 14px !important;
+}
+
+/* Visible Zoom button */
+
+.project-zoom-btn {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    z-index: 30;
+
+    min-width: 105px;
+    height: 44px;
+    padding: 0 16px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    color: #ffffff;
+    font-size: 13px;
+
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 999px;
+
+    background: rgba(5,15,28,.72);
+
+    box-shadow:
+        0 12px 32px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    cursor: pointer;
+}
+
+.project-zoom-btn:hover {
+    background: rgba(0,137,220,.82);
+}
+
+.project-zoom-btn strong {
+    font-weight: 700;
+}
+
+/* Thumbnails bhi image ke paas रहेंगी */
+
+html body .project-thumbnails {
+    width: fit-content !important;
+    max-width: 100% !important;
+
+    margin: 14px auto 0 !important;
+}
+
+/* ================= FULLSCREEN ZOOM ================= */
+
+body.project-zoom-open {
+    overflow: hidden !important;
+}
+
+.project-zoom-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    display: grid;
+    place-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    background: rgba(0,5,12,.95);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    transition:
+        opacity .28s ease,
+        visibility .28s ease;
+}
+
+.project-zoom-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.project-zoom-canvas {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+    touch-action: none;
+}
+
+.project-zoom-canvas.is-zoomed {
+    cursor: grab;
+}
+
+.project-zoom-canvas.is-dragging {
+    cursor: grabbing;
+}
+
+.project-zoom-canvas img {
+    width: auto;
+    height: auto;
+
+    max-width: 94vw;
+    max-height: 84vh;
+
+    object-fit: contain;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+
+    transform-origin: center;
+    will-change: transform;
+
+    filter: drop-shadow(0 30px 65px rgba(0,0,0,.55));
+
+    transition: transform .16s ease;
+}
+
+.project-zoom-canvas.is-dragging img {
+    transition: none;
+}
+
+/* Close button */
+
+.project-zoom-close {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 40;
+
+    width: 50px;
+    height: 50px;
+    padding: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: #ffffff;
+    font-size: 28px;
+
+    border: 1px solid rgba(255,255,255,.20);
+    border-radius: 50%;
+
+    background: rgba(20,27,38,.75);
+
+    cursor: pointer;
+}
+
+/* Zoom controls */
+
+.project-zoom-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    z-index: 40;
+
+    min-height: 58px;
+    padding: 7px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+
+    background: rgba(15,23,35,.78);
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.40),
+        inset 0 1px 0 rgba(255,255,255,.14);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transform: translateX(-50%);
+}
+
+.project-zoom-controls button {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.07);
+
+    cursor: pointer;
+}
+
+.project-zoom-controls button:hover {
+    background: rgba(0,153,255,.35);
+}
+
+.project-zoom-controls span {
+    min-width: 65px;
+
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+    html body .project-modal-preview {
+        width: fit-content !important;
+        max-width: 100% !important;
+    }
+
+    html body .project-modal-preview > img[data-project-main-img] {
+        max-width: 100% !important;
+        max-height: 68vh !important;
+        border-radius: 15px !important;
+    }
+
+    .project-zoom-btn {
+        top: 8px;
+        right: 8px;
+
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        padding: 0;
+
+        border-radius: 50%;
+    }
+
+    .project-zoom-btn strong {
+        display: none;
+    }
+
+    html body .project-modal-preview .project-nav-btn {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    html body .project-modal-preview .project-prev {
+        left: 8px !important;
+    }
+
+    html body .project-modal-preview .project-next {
+        right: 8px !important;
+    }
+
+    .project-zoom-canvas img {
+        max-width: 97vw;
+        max-height: 76vh;
+    }
+}/* LIGHT MODE — HIRE ME BUTTON COLOR FIX */
+
+html body:not(.dark-theme)
+.hero .hero-actions
+a.btn.btn-secondary[href*="whatsapp"] {
+  color: #1769d2 !important;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(225, 239, 255, 0.88)
+  ) !important;
+
+  border: 1px solid rgba(49, 130, 246, 0.35) !important;
+  border-radius: 999px !important;
+
+  box-shadow:
+    0 12px 28px rgba(49, 130, 246, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+}
+
+/* Hover effect */
+
+html body:not(.dark-theme)
+.hero .hero-actions
+a.btn.btn-secondary[href*="whatsapp"]:hover {
+  color: #ffffff !important;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #5a9cff
+  ) !important;
+
+  border-color: transparent !important;
+
+  box-shadow:
+    0 16px 36px rgba(37, 99, 235, 0.32) !important;
+}/* HIRE ME BUTTON — SAME COLOR AS TRUST BOXES */
+
+html body:not(.dark-theme)
+.hero .hero-actions
+a.btn.btn-secondary {
+  background: rgba(255, 255, 255, 0.78) !important;
+  color: #34445b !important;
+
+  border: 1px solid rgba(132, 169, 214, 0.32) !important;
+  border-radius: 999px !important;
+
+  opacity: 1 !important;
+  filter: none !important;
+
+  box-shadow:
+    0 8px 22px rgba(49, 83, 125, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+}
+
+/* Hover par bhi white glass rahega */
+
+html body:not(.dark-theme)
+.hero .hero-actions
+a.btn.btn-secondary:hover {
+  background: rgba(239, 247, 255, 0.96) !important;
+  color: #2563a9 !important;
+  border-color: rgba(49, 130, 246, 0.42) !important;
+}/* =========================================
+   FULL WEBSITE BLURRED IMAGE BACKGROUND
+========================================= */
+
+html {
+  background: #050a18 !important;
+}
+
+body {
+  position: relative !important;
+  isolation: isolate !important;
+  background: transparent !important;
+}
+
+/* Background image */
+
+body::before {
+  content: "" !important;
+  position: fixed !important;
+  inset: -50px !important;
+  z-index: -2 !important;
+
+  background-image: url("assets/images/download.png") !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+
+  filter: blur(28px) saturate(135%) !important;
+  transform: scale(1.1) !important;
+
+  pointer-events: none !important;
+}
+
+/* Background readability overlay */
+
+body::after {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* Dark mode background */
+
+body.dark-theme::before {
+  opacity: 0.82 !important;
+  filter:
+    blur(28px)
+    saturate(135%)
+    brightness(0.76) !important;
+}
+
+body.dark-theme::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 8, 20, 0.40),
+      rgba(5, 8, 24, 0.72)
+    ) !important;
+}
+
+/* Light mode background */
+
+body:not(.dark-theme)::before {
+  opacity: 0.25 !important;
+  filter:
+    blur(32px)
+    saturate(115%)
+    brightness(1.3) !important;
+}
+
+body:not(.dark-theme)::after {
+  background: rgba(239, 247, 255, 0.76) !important;
+}
+
+/* Sections transparent rakho */
+
+body .hero,
+body .services,
+body .work,
+body .about,
+body .process,
+body .testimonials,
+body .contact,
+body .site-footer,
+body main {
+  background: transparent !important;
+}
+
+/* Mobile performance */
+
+@media (max-width: 768px) {
+  body::before {
+    inset: -30px !important;
+    filter: blur(20px) saturate(125%) !important;
+    transform: scale(1.12) !important;
+  }
+
+  body.dark-theme::before {
+    filter:
+      blur(20px)
+      saturate(125%)
+      brightness(0.72) !important;
+  }
+
+  body:not(.dark-theme)::before {
+    filter:
+      blur(20px)
+      saturate(110%)
+      brightness(1.25) !important;
+  }
+}/* =========================================
+   ANIMATED BLURRED BACKGROUND
+========================================= */
+
+body::before {
+  animation: darshanBackgroundMove 18s
+    cubic-bezier(0.45, 0, 0.55, 1)
+    infinite alternate !important;
+
+  will-change: transform !important;
+}
+
+/* Subtle cinematic background movement */
+
+@keyframes darshanBackgroundMove {
+  0% {
+    transform:
+      scale(1.12)
+      translate3d(-1.5%, -1%, 0) !important;
+  }
+
+  35% {
+    transform:
+      scale(1.16)
+      translate3d(1.5%, -0.5%, 0) !important;
+  }
+
+  70% {
+    transform:
+      scale(1.14)
+      translate3d(2%, 1.5%, 0) !important;
+  }
+
+  100% {
+    transform:
+      scale(1.17)
+      translate3d(-1%, 2%, 0) !important;
+  }
+}
+
+/* Overlay mein halka breathing effect */
+
+body::after {
+  animation: darshanOverlayGlow 8s
+    ease-in-out infinite alternate !important;
+}
+
+@keyframes darshanOverlayGlow {
+  from {
+    opacity: 0.84;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile par movement slow aur light rahega */
+
+@media (max-width: 768px) {
+  body::before {
+    animation-duration: 26s !important;
+  }
+
+  body::after {
+    animation-duration: 12s !important;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none !important;
+  }
+}/* =========================================
+   WORKING BACKGROUND ANIMATION — FINAL FIX
+========================================= */
+
+@property --dfx-bg-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: -1%;
+}
+
+@property --dfx-bg-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: -1%;
+}
+
+@property --dfx-bg-scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1.12;
+}
+
+body::before {
+  transform:
+    translate3d(
+      var(--dfx-bg-x),
+      var(--dfx-bg-y),
+      0
+    )
+    scale(var(--dfx-bg-scale)) !important;
+
+  animation: dfxBackgroundFlow 16s
+    ease-in-out
+    infinite
+    alternate !important;
+
+  will-change: transform !important;
+}
+
+@keyframes dfxBackgroundFlow {
+  0% {
+    --dfx-bg-x: -2%;
+    --dfx-bg-y: -1%;
+    --dfx-bg-scale: 1.12;
+  }
+
+  35% {
+    --dfx-bg-x: 1%;
+    --dfx-bg-y: -2%;
+    --dfx-bg-scale: 1.17;
+  }
+
+  70% {
+    --dfx-bg-x: 2%;
+    --dfx-bg-y: 1%;
+    --dfx-bg-scale: 1.14;
+  }
+
+  100% {
+    --dfx-bg-x: -1%;
+    --dfx-bg-y: 2%;
+    --dfx-bg-scale: 1.18;
+  }
+}
+
+/* Mobile par slow movement */
+
+@media (max-width: 768px) {
+  body::before {
+    animation-duration: 22s !important;
+  }
+}
+
+/* Motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none !important;
+  }
+}/* REMOVE PROJECT ZOOM OPTION */
+
+.project-zoom-btn,
+[data-project-zoom-button] {
+  display: none !important;
+}
+
+/* Zoom viewer bhi disable */
+
+#darshanZoom,
+#darshanZoomViewer,
+.project-zoom-overlay {
+  display: none !important;
+}
+
+[data-project-main-img] {
+  cursor: default !important;
+}/* ZOOM BUTTON — ICON ONLY */
+
+html body
+.project-modal
+.project-modal-preview
+button.project-zoom-btn {
+  width: 48px !important;
+  min-width: 48px !important;
+  height: 48px !important;
+
+  padding: 0 !important;
+  gap: 0 !important;
+
+  border-radius: 50% !important;
+  font-size: 0 !important;
+}
+
+/* Zoom icon */
+
+html body
+.project-modal
+.project-modal-preview
+button.project-zoom-btn::before {
+  content: "🔍" !important;
+  display: block !important;
+
+  font-size: 19px !important;
+  line-height: 1 !important;
+
+  transform: none !important;
+  background: transparent !important;
+}/* =========================================
+   LIGHT MODE FOOTER COLOR FIX
+========================================= */
+
+html body:not(.dark-theme) .site-footer {
+  background: rgba(225, 237, 250, 0.72) !important;
+  border-top: 1px solid rgba(74, 112, 158, 0.18) !important;
+
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+}
+
+/* DarshanFx brand name */
+
+html body:not(.dark-theme)
+.site-footer .footer-brand {
+  color: #172337 !important;
+}
+
+html body:not(.dark-theme)
+.site-footer .footer-brand > span:last-child {
+  color: #172337 !important;
+  font-weight: 800 !important;
+}
+
+/* Description and copyright */
+
+html body:not(.dark-theme) .site-footer p,
+html body:not(.dark-theme) .footer-bottom p {
+  color: #5a687c !important;
+}
+
+/* Section headings */
+
+html body:not(.dark-theme) .footer-grid h2 {
+  color: #2563eb !important;
+  font-weight: 900 !important;
+}
+
+/* Footer links */
+
+html body:not(.dark-theme)
+.footer-grid a:not(.brand) {
+  color: #40516a !important;
+  font-weight: 650 !important;
+}
+
+/* Hover color */
+
+html body:not(.dark-theme)
+.footer-grid a:not(.brand):hover {
+  color: #2563eb !important;
+}
+
+/* Bottom separating line */
+
+html body:not(.dark-theme) .footer-bottom {
+  border-top: 1px solid rgba(74, 112, 158, 0.18) !important;
+}/* BACK TO TOP — PERFECT ROUND BUTTON */
+
+html body button.back-to-top {
+  width: 60px !important;
+  min-width: 60px !important;
+  height: 60px !important;
+  min-height: 60px !important;
+
+  padding: 0 !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #4f91ff
+  ) !important;
+
+  border: 1px solid rgba(255,255,255,0.28) !important;
+
+  box-shadow:
+    0 10px 30px rgba(37,99,235,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.3) !important;
+}
+
+html body button.back-to-top svg {
+  margin: 0 !important;
+  transform: none !important;
 }
